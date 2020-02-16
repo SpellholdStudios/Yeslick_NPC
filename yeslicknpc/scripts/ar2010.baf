@@ -1,0 +1,8 @@
+IF
+    Global("LK#YeslickExists","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("LK#YeslickExists","GLOBAL",1)
+    CreateCreature("lk#yesl",[586.318],5)
+END
+

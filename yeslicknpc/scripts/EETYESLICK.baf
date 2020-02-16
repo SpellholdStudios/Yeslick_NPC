@@ -1,0 +1,7 @@
+IF
+Global("YeslickSummoned","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("YeslickSummoned","GLOBAL",100)
+Continue()
+END

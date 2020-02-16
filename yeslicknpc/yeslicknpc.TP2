@@ -1,0 +1,358 @@
+// --------------------------------------------
+// Mod setup
+// --------------------------------------------
+// Basics
+BACKUP ~yeslicknpc/backup~
+AUTHOR ~Pixel Kaiser, K'aeloree and Lava Del'Vortel~
+VERSION ~2.0~
+README ~yeslicknpc/yeslick_readme.html~
+AUTO_TRA ~yeslicknpc/translations/%s~
+
+
+ALWAYS
+  // No exception, everything needs to be converted
+  ACTION_DEFINE_ARRAY Yeslicknoconvert BEGIN END
+
+  // any tra files used in LANGUAGE need to be reloaded after UTF-8 conversion
+  ACTION_DEFINE_ARRAY Yeslickreload BEGIN setup FATESP END
+
+  LAF HANDLE_CHARSETS
+    INT_VAR
+      infer_charsets = 1
+    STR_VAR
+      tra_path = EVAL ~%MOD_FOLDER%/translations~
+      noconvert_array = Yeslicknoconvert
+      reload_array = Yeslickreload
+  END
+END
+
+
+
+LANGUAGE ~English~
+         ~English~
+		 ~yeslicknpc/translations/english/setup.tra~
+// README ~yeslicknpc/yeslick_readme.html~
+
+
+// --------------------------------------------
+// Yeslick NPC Mod v1.1
+// --------------------------------------------
+// Component setup
+BEGIN @1 /* Yeslick NPC for BGII: SoA & ToB */
+
+ACTION_IF GAME_IS ~BG2EE EET~ THEN BEGIN
+  INCLUDE ~yeslicknpc/fl#add_kit_ee.tpa~
+  INCLUDE ~yeslicknpc/eet.tph~
+  INCLUDE ~yeslicknpc/functions.tph~
+END
+//////////////////////////////////////////////////////////////////////////////////
+////WILSON DOESN'T HAVE HIS BANTER FILE - THAT MAKES HIM SAD! LET'S CHANGE THAT///
+//////////////////////////////////////////////////////////////////////////////////
+
+
+ACTION_IF FILE_EXISTS_IN_GAME ~wilson.dlg~ THEN BEGIN
+ PRINT @2 /* Wilson detected - Wilson interdia.2da append - set Wilsons's banter file (BWILSON & BWILSO25) */
+    APPEND ~interdia.2da~ ~WILSON BWILSON BWILSO25~
+    UNLESS ~WILSON~
+   ACTION_IF NOT (FILE_EXISTS_IN_GAME ~BWILSON.dlg~) THEN BEGIN
+   COMPILE ~yeslicknpc/dialogue/BWILSONFix.d~
+  END
+   ACTION_IF NOT (FILE_EXISTS_IN_GAME ~BWILSO25.dlg~) THEN BEGIN
+   COMPILE ~yeslicknpc/dialogue/BWILSO25Fix.d~
+  END
+END
+
+
+
+// Adds custom IsValidForPartyDialogue state used throughout yeslicknpc
+APPEND ~STATE.IDS~
+  ~0x80101FEF CD_STATE_NOTVALID~
+  UNLESS ~CD_STATE_NOTVALID~
+  
+  
+// Kit
+COPY ~yeslicknpc/2da/lk#yk.2da~ ~override~
+
+ADD_KIT ~LK#YK~
+~LK#YK 0 0 0 0 0 0 0 0~ 
+~LK#YK 0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~
+~LK#YK 0 0 0 0 9 0~ 
+~LK#YK 0 0 0 0 0 0~ 
+~LK#YK 0 0 0 0 0 0~ 
+~LK#YK 0 0 0 0 0 0~
+~LK#YK 1 0 0 1 0 0 0 0 0~ 
+~LK#YK 0 0 0 0 0 0~ 
+~override\LK#YK.2da~
+~~
+~0x00100000 3~
+~Cl0~
+~PLAT04 * HELM07 BAG20 RING07 RING31 * BOOT01 AMUL20 BRAC09 BELT04 SW1H31 CLCK07 SHLD24 BAG02 BAG04 * * * *~ 
+SAY @3 /* Alaghor of Clangeddin */ 
+SAY @3 /* Alaghor of Clangeddin */
+SAY @4 /* ALAGHOR OF CLANGEDDIN: Also called the clerics of Clangeddin. Clangeddin Silverbeard is the dwarven god of battle, war, and bravery; his titles include the Father of Battle and the Lord of the Twin Axes. He delights in battle, although he does not tolerate treachery or deceit, and he expects his followers to do the same. He and his followers hate giants and have trained their fellow dwarves in special ways to fight them.
+
+ADVANTAGES:
+
+-At level 8 may cast @9 /* Spiritual Axe */ once per day
+-At level 14 may cast @5 /* Strength */ once per day. It works as the Wizard spell of the same name.
+-At level 16 may cast @7 /* Axe Storm of Clangeddin */ which work as "Blade Barrier" cleric spell.
+
+DISADVANTAGES:
+
+- Only for dwarves
+- Only for Lawful Neutral or Lawful Good characters */
+ACTION_IF GAME_IS ~BG2EE EET~ THEN BEGIN
+LAF fl#add_kit_ee
+  STR_VAR
+    kit_name = LK#YK
+END
+END
+
+// Alaghar of Clangeddin Kit
+
+// Strength
+COPY_EXISTING ~SPWI214.spl~ ~override/lk#y2.spl~
+WRITE_SHORT 0x1C 4
+WRITE_LONG 0x34 1
+READ_LONG 0x64 "offset_abil"
+READ_SHORT  0x68 "num_abil"
+READ_ASCII ("%offset_abil%" + 0x04) "bam"            
+WRITE_EVALUATED_ASCII 0x3A "%bam%"                
+SAY NAME1 @5 /* Strength */
+SAY NAME2 @5 /* Strength */                           
+SAY UNIDENTIFIED_DESC @6 /* Clangeddin's Strength. */
+SAY DESC @6 /* Clangeddin's Strength. */
+WHILE (0 < "%num_abil%")
+BEGIN
+WRITE_SHORT (("%offset_abil%" + 0x02) + (("%num_abil%" - 1) * 0x28)) 4
+SET "num_abil" = ("%num_abil%" - 1)
+END 
+
+// Blade Barrier - Axe Storm of Clangeddin
+COPY_EXISTING ~SPPR603.spl~ ~override/lk#y3.spl~
+WRITE_SHORT 0x1C 4                        
+WRITE_LONG 0x34 1
+READ_LONG 0x64 "offset_abil"
+READ_SHORT  0x68 "num_abil"
+READ_ASCII ("%offset_abil%" + 0x04) "bam"            
+WRITE_EVALUATED_ASCII 0x3A "%bam%"                
+SAY NAME1 @7 /* Axe Storm of Clangeddin */                           
+SAY NAME2 @7 /* Axe Storm of Clangeddin */
+SAY UNIDENTIFIED_DESC @8 /* Axe Storm of Clangeddin. */
+SAY DESC @8 /* Axe Storm of Clangeddin. */
+WHILE (0 < "%num_abil%")
+BEGIN
+WRITE_SHORT (("%offset_abil%" + 0x02) + (("%num_abil%" - 1) * 0x28)) 4
+SET "num_abil" = ("%num_abil%" - 1)
+END 
+
+// Spiritual Axe
+
+COPY ~yeslicknpc/spells/lk#y1.spl~ ~override/lk#y1.spl~
+SAY NAME1 @9 /* Spiritual Axe */
+SAY NAME2 @9 /* Spiritual Axe */
+
+COPY ~yeslicknpc/items/lk#y1a.itm~ ~override/lk#y1a.itm~
+SAY NAME1 @9 /* Spiritual Axe */
+SAY NAME2 @9 /* Spiritual Axe */
+
+
+
+
+///////SYMBOL
+
+COPY ~yeslicknpc/items/lk#ysy1i.itm~ ~override/lk#ysy1i.itm~
+SAY NAME1 @10 /* Holy Symbol of Clangeddin */
+SAY NAME2 @10 /* Holy Symbol of Clangeddin */
+SAY DESC @11 /* Only those most worthy and devoted servants of the Clangeddin are granted these powerful holy symbols. 
+
+STATISTICS:
+
+   Grants an additional 6th and 7th level spell.
+   5% Magic Resistance while worn
+   +2 AC vs. Giants
+
+Usuable By:
+Dwarf
+Lawful Good
+Lawful Neutral */
+
+// Compiling dialogue...
+PRINT @12 /* Compiling dialogue... */
+
+COMPILE ~yeslicknpc/dialogue/lk#yesl.d~
+COMPILE ~yeslicknpc/dialogue/lk#yesj.d~
+COMPILE ~yeslicknpc/dialogue/blk#yes.d~
+COMPILE ~yeslicknpc/dialogue/lk#yesp.d~
+
+COMPILE ~yeslicknpc/dialogue/blk#ye25.d~
+COMPILE ~yeslicknpc/dialogue/lk#yes25.d~
+COMPILE ~yeslicknpc/dialogue/lk#ye25J.d~
+
+ACTION_IF GAME_IS ~bg2ee eet~ THEN BEGIN
+  COMPILE ~yeslicknpc/dialogue/EE.d~
+END
+
+//Fate Spirit
+ACTION_IF GAME_IS ~eet~ BEGIN
+  EXTEND_TOP ~AR4500.bcs~ ~yeslicknpc\scripts\EETYESLICK.baf~
+  INCLUDE ~EET/other/EET_functions.tph~
+  LAF ~EET_NPC_TRANSITION~
+    INT_VAR
+      type = 2
+    STR_VAR
+      dv = "LK#YESLK"
+      override_SoA = "lk#yesl"
+      override_ToB = "lk#yes25"
+      dialog_ToB = "LK#YES25"
+      traFile = EVAL "yeslicknpc/translations/%LANGUAGE%/fatesp.tra"
+      string = "@0"
+      stringPosDV = "Wilson"
+  END
+END ELSE BEGIN
+  COMPILE ~yeslicknpc/dialogue/FATESP.d~
+END
+ 
+// Compiling scripts...
+PRINT @13 /* Compiling and extending scripts... */
+
+COMPILE ~yeslicknpc/scripts/lk#yesl.baf~
+COMPILE ~yeslicknpc/scripts/lk#yes25.baf~
+EXTEND_BOTTOM ~ar2010.bcs~ ~yeslicknpc/scripts/ar2010.baf~
+
+
+// Copying images and creatures
+PRINT @14 /* Copying images and creatures... */
+
+COPY ~yeslicknpc/images~ ~override~
+
+COPY ~yeslicknpc/wav~ ~override~
+
+COPY ~yeslicknpc/creatures/lk#yesl.cre~ ~override/lk#yesl.cre~
+  SAY NAME1 @15 /* Yeslick */
+  SAY NAME2 @15 /* Yeslick */
+  WRITE_EVALUATED_ASCII DIALOG          ~%DEST_RES%~ #8
+  WRITE_EVALUATED_ASCII DEATHVAR        ~LK#YESLK~ #32
+  WRITE_EVALUATED_ASCII SCRIPT_OVERRIDE ~%DEST_RES%~ #8
+  SAY BIO @16 /* When asked about his past, Yeslick chuckles grimly.  "There ain't nothin' there ye be wantin' to know, young 'un.  Trust me."  From what you have gleaned, Yeslick is peculiar for a dwarf; a follower of Vergadain, the Dwarven god of wealth and luck and Clangeddin, Dwarven god of war, he is an unassuming companion with an aversion to alcohol and the undead. You know little about his history beyond that he grew up in the Dales to the north and that heat makes him extremely irritable. */
+//  SAY MORALE ~~
+  SAY LEADER @17 /* Slow and steady while I'm leader. */
+  SAY TIRED @18 /* Even dwarves need to rest. I can't walk much further. */
+  SAY BORED @19 /* Why'd I leave my cell if I am to stand about doing nothing? */
+  SAY BATTLE_CRY1 @20 /* Argh! */
+  SAY BATTLE_CRY2 @21 /* Clangeddin's might, be with us! */
+  SAY BATTLE_CRY3 @22 /* Begone! */
+  SAY BATTLE_CRY4 @23 /* Enemies we be. */
+  SAY BATTLE_CRY5 @24 /* I swing a mean axe! */
+  SAY DYING @25 /* Aaaauugh! */
+  SAY HURT @26 /* Ill I am! Now when a dwarf says he's sick, you know it's serious! */
+  SAY AREA_DUNGEON @27 /* 'Tis just like the tunnels of my old clan! */
+  SAY AREA_CITY @28 /* A friendly face is a blessed sight in these times. */
+  SAY AREA_FOREST @29 /* Your ego is positively elven! Drop it a notch--lest I do it for you! */
+  SAY AREA_DAY @30 /* I prefer the stone of my cell o'er this wide-open empty! */
+  SAY AREA_NIGHT @31 /* I prefer the stone of my cell o'er this wide-open empty! */
+  SAY SELECT_COMMON1 @32 /* You need something? */
+  SAY SELECT_COMMON2 @33 /* Whate'er ye need! */
+  SAY SELECT_COMMON3 @34 /* Ye need only ask. */
+  SAY SELECT_COMMON4 @35 /* Kind words are always appreciated. */
+//  SAY SELECT_COMMON5 ~~
+//  SAY SELECT_COMMON6 ~~
+  SAY SELECT_ACTION1 @36 /* As you will. */
+  SAY SELECT_ACTION2 @37 /* Clangeddin's will be done. */
+  SAY SELECT_ACTION3 @38 /* Be glad. */
+  SAY SELECT_ACTION4 @39 /* My father? Was a miner. And my mother? Was a miner before him. */
+  SAY SELECT_ACTION5 @40 /* Ay, who's there now? */
+//  SAY SELECT_ACTION6 ~~
+//  SAY SELECT_ACTION7 ~~
+  SAY SELECT_RARE1 @41 /* You load sixteen tons, what do you get? Another day older--and deeper in debt. */
+  SAY SELECT_RARE2 @42 /* Friendships last when gold is long gone. */
+  SAY CRITICAL_HIT @43 /* Erh! */
+  SAY CRITICAL_MISS @44 /* I shouldn't have got out of bed this morn. */
+//  SAY TARGET_IMMUNE ~~
+  SAY INVENTORY_FULL @45 /* 'I've been through enough! */
+  SAY HAPPY @46 /* We do good! 'Tis as my clan was, long ago. */
+  SAY UNHAPPY_ANNOYED @47 /* There be dark horizons if we don't change our ways. */
+  SAY UNHAPPY_SERIOUS @48 /* I've seen enough greed and evil! Change your ways, lest enemies we be! */
+  SAY UNHAPPY_BREAKING @49 /* Ye be no better than the throne themselves! I'll not stand by while this happens! */
+  SAY SPELL_DISRUPTED @50 /* You needn't take such pleasure in it! */
+  SAY SET_A_TRAP @51 /* Violence solves only the simplest problems. You must think your way through the tough ones. */
+  SAY HIDDEN_IN_SHADOWS @52 /* Watch what you say. */
+  SAY PICKED_POCKET @53 /* 'Twould be good if you tithed a few coins now and then. The favour of gods is worth a few gold. */
+
+COPY ~yeslicknpc/creatures/lk#yes25.cre~ ~override/lk#yes25.cre~
+  SAY NAME1 @15 /* Yeslick */
+  SAY NAME2 @15 /* Yeslick */
+  WRITE_EVALUATED_ASCII DIALOG          ~%DEST_RES%~ #8
+  WRITE_EVALUATED_ASCII DEATHVAR        ~LK#YESLK~ #32
+  WRITE_EVALUATED_ASCII SCRIPT_OVERRIDE ~%DEST_RES%~ #8
+  SAY BIO @16 /* When asked about his past, Yeslick chuckles grimly.  "There ain't nothin' there ye be wantin' to know, young 'un.  Trust me."  From what you have gleaned, Yeslick is peculiar for a dwarf; a follower of Vergadain, the Dwarven god of wealth and luck and Clangeddin, Dwarven god of war, he is an unassuming companion with an aversion to alcohol and the undead. You know little about his history beyond that he grew up in the Dales to the north and that heat makes him extremely irritable. */
+//  SAY MORALE ~~
+  SAY LEADER @17 /* Slow and steady while I'm leader. */
+  SAY TIRED @18 /* Even dwarves need to rest. I can't walk much further. */
+  SAY BORED @19 /* Why'd I leave my cell if I am to stand about doing nothing? */
+  SAY BATTLE_CRY1 @20 /* Argh! */
+  SAY BATTLE_CRY2 @21 /* Clangeddin's might, be with us! */
+  SAY BATTLE_CRY3 @22 /* Begone! */
+  SAY BATTLE_CRY4 @23 /* Enemies we be. */
+  SAY BATTLE_CRY5 @24 /* I swing a mean axe! */
+  SAY DYING @25 /* Aaaauugh! */
+  SAY HURT @26 /* Ill I am! Now when a dwarf says he's sick, you know it's serious! */
+  SAY AREA_DUNGEON @27 /* 'Tis just like the tunnels of my old clan! */
+  SAY AREA_CITY @28 /* A friendly face is a blessed sight in these times. */
+  SAY AREA_FOREST @29 /* Your ego is positively elven! Drop it a notch--lest I do it for you! */
+  SAY AREA_DAY @30 /* I prefer the stone of my cell o'er this wide-open empty! */
+  SAY AREA_NIGHT @31 /* I prefer the stone of my cell o'er this wide-open empty! */
+  SAY SELECT_COMMON1 @32 /* You need something? */
+  SAY SELECT_COMMON2 @33 /* Whate'er ye need! */
+  SAY SELECT_COMMON3 @34 /* Ye need only ask. */
+  SAY SELECT_COMMON4 @35 /* Kind words are always appreciated. */
+//  SAY SELECT_COMMON5 ~~
+//  SAY SELECT_COMMON6 ~~
+  SAY SELECT_ACTION1 @36 /* As you will. */
+  SAY SELECT_ACTION2 @37 /* Clangeddin's will be done. */
+  SAY SELECT_ACTION3 @38 /* Be glad. */
+  SAY SELECT_ACTION4 @39 /* My father? Was a miner. And my mother? Was a miner before him. */
+  SAY SELECT_ACTION5 @40 /* Ay, who's there now? */
+//  SAY SELECT_ACTION6 ~~
+//  SAY SELECT_ACTION7 ~~
+  SAY SELECT_RARE1 @41 /* You load sixteen tons, what do you get? Another day older--and deeper in debt. */
+  SAY SELECT_RARE2 @42 /* Friendships last when gold is long gone. */
+  SAY CRITICAL_HIT @43 /* Erh! */
+  SAY CRITICAL_MISS @44 /* I shouldn't have got out of bed this morn. */
+//  SAY TARGET_IMMUNE ~~
+  SAY INVENTORY_FULL @45 /* 'I've been through enough! */
+  SAY HAPPY @46 /* We do good! 'Tis as my clan was, long ago. */
+  SAY UNHAPPY_ANNOYED @47 /* There be dark horizons if we don't change our ways. */
+  SAY UNHAPPY_SERIOUS @48 /* I've seen enough greed and evil! Change your ways, lest enemies we be! */
+  SAY UNHAPPY_BREAKING @49 /* Ye be no better than the throne themselves! I'll not stand by while this happens! */
+  SAY SPELL_DISRUPTED @50 /* You needn't take such pleasure in it! */
+  SAY SET_A_TRAP @51 /* Violence solves only the simplest problems. You must think your way through the tough ones. */
+  SAY HIDDEN_IN_SHADOWS @52 /* Watch what you say. */
+  SAY PICKED_POCKET @53 /* 'Twould be good if you tithed a few coins now and then. The favour of gods is worth a few gold. */
+
+// Appends
+PRINT @54 /* Appending files... */
+
+APPEND ~interdia.2da~ ~LK#YESLK BLK#YES BLK#YE25~
+   UNLESS ~LK#YESLK~
+
+APPEND ~pdialog.2da~ ~LK#YESLK LK#YESP LK#YESJ LK#YESD LK#YE25P LK#YE25J LK#YE25D LK#YES25~
+  UNLESS ~LK#YESLK~
+
+//Items
+
+COPY ~yeslicknpc/items/lk#yesw.itm~ ~override/lk#yesw.itm~
+
+
+//EPILOGUES
+
+EXTEND_TOP ~ar6200.bcs~ ~yeslicknpc\scripts\AR6200.baf~
+
+COPY ~yeslicknpc\lk#yesEp.2da~ ~override\lk#yesEp.2da~
+
+        REPLACE_TEXTUALLY ~PORTRAIT~ ~yeslickL~ 
+
+        REPLACE 99999 @55 /* After the end of his adventures with the Bhaalspawn, Yeslick made his journey back to his home in the Sword Coast. Along the way, he met his old friend Taerom Thunderhammer in Beregost before deciding to start a new and important mission of his own. With his own hands, he began the process of rebuilding the Orothiar mines in the Cloakwood forest, and with it, the future of his clan. It took him five arduous years before his task was complete and his fallen home was restored to its former glory, and Yeslick dedicated every last piece of coin and influence he gathered during his time at <CHARNAME>'s side, but his efforts finally ended in success. The land, now back in the hands of its rightful owner, became a important symbol of dwarven faith and strong will.
+
+Yeslick, having fulfilled his last wishes and knowing his time was at hand, passed away three years later, leaving everything he had in the hands of his trusted partners and friends. His departure was a peaceful one, for his knew that his home was in trusted hands. */
+       

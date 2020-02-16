@@ -1,0 +1,10 @@
+IF
+   Global("StartEndBios","AR6200",1)
+   InParty("LK#YESLK")
+   Global("lk#yeslickBIO","GLOBAL",0)
+THEN
+   RESPONSE #100
+      SetGlobal("lk#yeslickBIO","GLOBAL",1)
+      TextScreen("lk#yesEP")
+END
+

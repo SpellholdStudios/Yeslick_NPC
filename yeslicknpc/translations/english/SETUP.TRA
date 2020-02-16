@@ -1,0 +1,80 @@
+
+@1    = ~Yeslick NPC for BGII: SoA & ToB~
+@2    = ~Wilson detected - Wilson interdia.2da append - set Wilsons's banter file (BWILSON & BWILSO25)~
+@3    = ~Alaghor of Clangeddin~
+@4    = ~ALAGHOR OF CLANGEDDIN: Also called the clerics of Clangeddin. Clangeddin Silverbeard is the dwarven god of battle, war, and bravery; his titles include the Father of Battle and the Lord of the Twin Axes. He delights in battle, although he does not tolerate treachery or deceit, and he expects his followers to do the same. He and his followers hate giants and have trained their fellow dwarves in special ways to fight them.
+
+ADVANTAGES:
+
+-At level 8 may cast "Spiritual Axe" once per day
+-At level 14 may cast "Strength" once per day. It works as the Wizard spell of the same name.
+-At level 16 may cast "Axe Storm of Clangeddin" which work as "Blade Barrier" cleric spell.
+
+DISADVANTAGES:
+
+- Only for dwarves
+- Only for Lawful Neutral or Lawful Good characters~
+@5    = ~Strength~
+@6    = ~Clangeddin's Strength.~
+@7    = ~Axe Storm of Clangeddin~
+@8    = ~Axe Storm of Clangeddin.~
+@9    = ~Spiritual Axe~
+@10   = ~Holy Symbol of Clangeddin~
+@11   = ~Only those most worthy and devoted servants of the Clangeddin are granted these powerful holy symbols. 
+
+STATISTICS:
+
+   Grants an additional 6th and 7th level spell.
+   5% Magic Resistance while worn
+   +2 AC vs. Giants
+
+Usuable By:
+Dwarf
+Lawful Good
+Lawful Neutral~
+@12   = ~Compiling dialogue...~
+@13   = ~Compiling and extending scripts...~
+@14   = ~Copying images and creatures...~
+@15   = ~Yeslick~
+@16   = ~When asked about his past, Yeslick chuckles grimly.  "There ain't nothin' there ye be wantin' to know, young 'un.  Trust me."  From what you have gleaned, Yeslick is peculiar for a dwarf; a follower of Vergadain, the Dwarven god of wealth and luck and Clangeddin, Dwarven god of war, he is an unassuming companion with an aversion to alcohol and the undead. You know little about his history beyond that he grew up in the Dales to the north and that heat makes him extremely irritable.~
+@17   = ~Slow and steady while I'm leader.~ [lk#yesb]
+@18   = ~Even dwarves need to rest. I can't walk much further.~ [lk#yesc]
+@19   = ~Why'd I leave my cell if I am to stand about doing nothing?~ [lk#yesd]
+@20   = ~Argh!~ [lk#yes38]
+@21   = ~Clangeddin's might, be with us!~ [lk#yesa]
+@22   = ~Begone!~ [lk#yes0]
+@23   = ~Enemies we be.~ [lk#yes8]
+@24   = ~I swing a mean axe!~ [lk#yes9]
+@25   = ~Aaaauugh!~ [lk#yesm]
+@26   = ~Ill I am! Now when a dwarf says he's sick, you know it's serious!~ [lk#yese]
+@27   = ~'Tis just like the tunnels of my old clan!~ [lk#yesp]
+@28   = ~A friendly face is a blessed sight in these times.~ [lk#yeso]
+@29   = ~Your ego is positively elven! Drop it a notch--lest I do it for you!~ [lk#yesn]
+@30   = ~I prefer the stone of my cell o'er this wide-open empty!~ [lk#yesq]
+@31   = ~I prefer the stone of my cell o'er this wide-open empty!~ [lk#yesr]
+@32   = ~You need something?~ [lk#yesf]
+@33   = ~Whate'er ye need!~ [lk#yesg]
+@34   = ~Ye need only ask.~ [lk#yesh]
+@35   = ~Kind words are always appreciated.~ [lk#yesv]
+@36   = ~As you will.~ [lk#yesi]
+@37   = ~Clangeddin's will be done.~ [lk#yesj]
+@38   = ~Be glad.~ [lk#yesk]
+@39   = ~My father? Was a miner. And my mother? Was a miner before him.~ [lk#yesx]
+@40   = ~Ay, who's there now?~ [lk#yesy]
+@41   = ~You load sixteen tons, what do you get? Another day older--and deeper in debt.~ [lk#yest]
+@42   = ~Friendships last when gold is long gone.~ [lk#yesu]
+@43   = ~Erh!~ [lk#yesl]
+@44   = ~I shouldn't have got out of bed this morn.~ [lk#yes1]
+@45   = ~'I've been through enough!~ [lk#yes3]
+@46   = ~We do good! 'Tis as my clan was, long ago.~ [lk#yes04]
+@47   = ~There be dark horizons if we don't change our ways.~ [lk#yes2]
+@48   = ~I've seen enough greed and evil! Change your ways, lest enemies we be!~ [lk#yes10]
+@49   = ~Ye be no better than the throne themselves! I'll not stand by while this happens!~ [lk#yes11]
+@50   = ~You needn't take such pleasure in it!~ [lk#yes6]
+@51   = ~Violence solves only the simplest problems. You must think your way through the tough ones.~ [lk#yes7]
+@52   = ~Watch what you say.~ [lk#yes5]
+@53   = ~'Twould be good if you tithed a few coins now and then. The favour of gods is worth a few gold.~ [lk#yes4]
+@54   = ~Appending files...~
+@55   = ~After the end of his adventures with the Bhaalspawn, Yeslick made his journey back to his home in the Sword Coast. Along the way, he met his old friend Taerom Thunderhammer in Beregost before deciding to start a new and important mission of his own. With his own hands, he began the process of rebuilding the Orothiar mines in the Cloakwood forest, and with it, the future of his clan. It took him five arduous years before his task was complete and his fallen home was restored to its former glory, and Yeslick dedicated every last piece of coin and influence he gathered during his time at <CHARNAME>'s side, but his efforts finally ended in success. The land, now back in the hands of its rightful owner, became a important symbol of dwarven faith and strong will.
+
+Yeslick, having fulfilled his last wishes and knowing his time was at hand, passed away three years later, leaving everything he had in the hands of his trusted partners and friends. His departure was a peaceful one, for his knew that his home was in trusted hands.~
