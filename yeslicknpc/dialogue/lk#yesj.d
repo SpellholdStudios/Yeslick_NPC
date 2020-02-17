@@ -217,7 +217,7 @@ END
 // Friendship #5: Irenicus part deux, Murder
 IF ~Global("LK#YeslickFriendTalks","GLOBAL",9)~ Yftalk4
   SAY @75 /* Hoi, <CHARNAME>... ye alright o'er there, <PRO_GIRLBOY>? That's quite an intense look ye have in yer eyes... */
-  = @76 /* <CHARNAME>... ? <CHARNAME>, are ye even listenin' ta me, <PRO_BOYGIRL>?! */
+  = @76 /* <CHARNAME>... ? <CHARNAME>, are ye even listenin' ta me, <PRO_GIRLBOY>?! */
   ++ @77 /* Oh, Yeslick! You startled me. What is it you need, my friend? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",10) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft4a
   ++ @78 /* Hm, yes? What is it, Yeslick... ? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",10) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft4a
   ++ @79 /* Damn, I had hoped if I kept quiet long enough you would leave me be. Why must things never go my way? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",10) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft4b
@@ -916,7 +916,7 @@ END
 APPEND LK#YESJ
 
 IF ~~ LK#YeslickToL_1
-  SAY @279 /* Ye must be mad, <PRO_BOYGIRL>! Do ye really think ye can take on Irenicus without me? Ha! */
+  SAY @279 /* Ye must be mad, <PRO_GIRLBOY>! Do ye really think ye can take on Irenicus without me? Ha! */
   = @280 /* I'll be right besides ye the whole time, just like I always have been. Besides, after all this runnin' around he's made us do, I want a piece o' him meself! */
   COPY_TRANS PLAYER1 33
 END
