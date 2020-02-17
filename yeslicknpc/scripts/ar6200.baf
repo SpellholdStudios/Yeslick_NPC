@@ -5,6 +5,6 @@ IF
 THEN
    RESPONSE #100
       SetGlobal("lk#yeslickBIO","GLOBAL",1)
-      TextScreen("lk#yesEP")
+      TextScreen("lk#yesep")
 END
 
