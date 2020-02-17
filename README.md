@@ -2,9 +2,6 @@
 ![Platform](https://img.shields.io/static/v1?label=platform&message=windows%20%7C%20macos%20%7C%20linux&color=informational)
 ![Language](https://img.shields.io/static/v1?label=language&message=English&color=limegreen)
 
-<div align="center"><h1></a>Mazzy Friendship</h1>
-
-
 <div align="center"><h1></a>Yeslick NPC</h1>
 
 <h3>A Spellhold Studios mod for Baldur's Gate II: ToB (classical and EE games),<br>
@@ -45,7 +42,7 @@ This mod is designed to work on the following Infinity Engine games: the origina
 
 The Yeslick NPC mod should be compatible with all WeiDU mods, however, we cannot test every single one. It is only compatible with BGII: ToB. If you do encounter an error, please contact <a href="kae@spellholdstudios.net">K'aeloree</a> or alternatively post on the <a href="http://www.shsforums.net/forum/609-yeslick/">forums</a>.
 
->Please install the latest version of the <a href="http://www.gibberlings3.net/bg2fixpack/">BG2 Fixpack. Some parts of the mod may not work correctly without it.</a>.
+>Please install the latest version of the <a href="http://www.gibberlings3.net/bg2fixpack/">BG2 Fixpack</a>. Some parts of the mod may not work correctly without it.
 <div align="right"><a href="#top">Back to top</a></div>
 
 
@@ -189,6 +186,7 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 	- Updated deprecated modding tools links.
 	- Updated and renamed readme file to *yeslicknpc-readme-english.html*.
 
+	- Reorganized mod architecture tree: created *lib* and *readme* folders to sort files according to their types, renamed *images* folder to *bam* folder.
 	- Removed useless files and backup folder.
 	- Lower cased files.
 	- Added archive libiconv-1.9.2-1-src.7z with iconv licence info.
@@ -201,9 +199,6 @@ multi-class
 
 - Removed as of v3.0: now, kit value is integrated into .cre files by main_component.tpa routine
 
-	- Reorganized mod architecture tree: created folders to sort files according to their types.
-	- Reorganized mod architecture tree: created or renamed folders to sort files according to their types.
-	- Reorganized mod architecture tree: created *lib* and *readme* folders, renamed *images* and *language* folders to *bam* and *lang* folders.
 
 ## 
 
