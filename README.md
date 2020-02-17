@@ -123,11 +123,11 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 
 ## <a name="credits" id="credits"></a>Credits and Acknowledgements
 
-#### Main author: Pixel Kaiser
-#### Coder and consultations: K'aeloree
-#### Update help: Artemius_I
-#### Kit, items and ToB content: Lava Del'Vortel
-#### Proofreaders: RavenBlack, Choo Choo, Vivian, Rhaella, Artemius_I
+**Main author: Pixel Kaiser**
+**Coder and consultations: K'aeloree**
+**Update help: Artemius_I, Gwendolyne**
+**Kit, items and ToB content: Lava Del'Vortel**
+**Proofreaders: RavenBlack, Choo Choo, Vivian, Rhaella, Artemius_I**
 
 ## 
 
