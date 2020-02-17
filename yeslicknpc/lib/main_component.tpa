@@ -1,0 +1,228 @@
+/* ====================================== *
+ *         COMPONENT INSTALLATION         *
+ * ====================================== */
+
+/* -------------------------------------------------------------------------------------------------- *
+ *     Adds CamDawg's custom IsValidForPartyDialogue state used throughout yeslicknpc. Thanks Cam!    *
+ * -------------------------------------------------------------------------------------------------- *
+ *  covers STATE_CONFUSED, STATE_FEEBLEMINDED, STATE_SILENCED, STATE_DEAD, STATE_ACID_DEATH,          *
+ *  STATE_FLAME_DEATH, STATE_EXPLODING_DEATH, STATE_STONE_DEATH, STATE_FROZEN_DEATH, STATE_HELPLESS,  *
+ *  STATE_STUNNED, STATE_PANIC, STATE_BERSERK, STATE_SLEEPING                                         *
+ * -------------------------------------------------------------------------------------------------- */
+APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~CD_STATE_NOTVALID~
+
+
+/* -------------------------------- *
+ *    Loads macros and functions    *
+ * -------------------------------- */
+
+INCLUDE ~%MOD_FOLDER%/lib/gw_functions.tpa~						// Loads macros and functions library dealing with tooltip appending and specific EE items descriptions.
+INCLUDE ~%MOD_FOLDER%/lib/gw_convert_inventory_bam_to_ee.tpa~	// Loads function converting inventory BAMs to EE.
+INCLUDE ~%MOD_FOLDER%/lib/fl#add_kit_ee.tpa~
+
+ACTION_IF is_ee BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/eet.tph~
+	INCLUDE ~%MOD_FOLDER%/functions.tph~
+END
+
+
+/* ----------------------------------------------------------------------------- *
+ *  WILSON DOESN'T HAVE HIS BANTER FILE - THAT MAKES HIM SAD! LET'S CHANGE THAT  *
+ *  Give WILSON banter files as used in the Wilson chronicles                    *
+ * ----------------------------------------------------------------------------- */
+ACTION_IF FILE_EXISTS_IN_GAME ~wilson.dlg~ BEGIN
+
+	PRINT @11 /* Wilson detected - Wilson interdia.2da append - set Wilsons's banter file (BWILSON & BWILSO25) */
+	APPEND ~interdia.2da~ ~WILSON BWILSON BWILSO25~ UNLESS ~WILSON~
+
+	ACTION_IF NOT (FILE_EXISTS_IN_GAME ~BWILSON.dlg~) BEGIN
+		<<<<<<<< ...inlined/BWILSON.d
+BEGIN BWILSON
+>>>>>>>>
+		COMPILE ~...inlined/BWILSON.d~
+	END
+	ACTION_IF NOT (FILE_EXISTS_IN_GAME ~BWILSO25.dlg~) BEGIN
+		<<<<<<<< ...inlined/BWILSO25.d
+BEGIN BWILSO25
+>>>>>>>>
+		COMPILE ~...inlined/BWILSO25.d~
+	END
+
+END
+
+
+/* ----------------------------------- *
+ *  Cleric Kit: Alaghor of Clangeddin  *
+ * ----------------------------------- */
+ACTION_IF Alaghor_kit BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/alaghor_kit.tpa~
+END
+
+
+/* ------------------------ *
+ *  Compiling dialogues...  *
+ * ------------------------ */
+PRINT @12 /* Compiling dialogue... */
+
+COMPILE	~%MOD_FOLDER%/dialogue/lk#yesl.d~
+		~%MOD_FOLDER%/dialogue/lk#yesj.d~
+		~%MOD_FOLDER%/dialogue/blk#yes.d~
+		~%MOD_FOLDER%/dialogue/lk#yesp.d~
+
+		~%MOD_FOLDER%/dialogue/blk#ye25.d~
+		~%MOD_FOLDER%/dialogue/lk#yes25.d~
+		~%MOD_FOLDER%/dialogue/lk#ye25J.d~
+
+ACTION_IF is_ee BEGIN
+	COMPILE ~%MOD_FOLDER%/dialogue/ee.d~
+END
+
+// Fate Spirit
+// -----------
+ACTION_IF is_eet BEGIN
+	EXTEND_TOP ~ar4500.bcs~ ~%MOD_FOLDER%\scripts\eetyeslick.baf~
+	INCLUDE ~EET/other/EET_functions.tph~
+	LAF ~EET_NPC_TRANSITION~
+		INT_VAR
+			type = 2
+		STR_VAR
+			dv = "LK#YESLK"
+			override_SoA = "lk#yesl"
+			override_ToB = "lk#yes25"
+			dialog_ToB = "LK#YES25"
+			traFile = EVAL "yeslicknpc/translations/%LANGUAGE%/fatesp.tra"
+			string = "@0"
+			stringPosDV = "Wilson"
+	  END
+END ELSE BEGIN
+	COMPILE ~%MOD_FOLDER%/dialogue/fatesp.d~
+END
+
+
+/* ---------------------- *
+ *  Compiling scripts...  *
+ * ---------------------- */
+PRINT @13 /* Compiling and extending scripts... */
+
+COMPILE ~%MOD_FOLDER%/scripts/lk#yesl.baf~
+		~%MOD_FOLDER%/scripts/lk#yes25.baf~
+
+EXTEND_BOTTOM ~ar2010.bcs~ ~%MOD_FOLDER%/scripts/ar2010.baf~
+
+
+/* ----------------------------- *
+ *  Copying files and creatures  *
+ * ----------------------------- */
+PRINT @14 /* Copying images and creatures... */
+
+// Copy soundset
+// -------------
+COPY ~%MOD_FOLDER%/wav~ ~override~
+
+// Copy BAMs or convert them to EE
+// -------------------------------
+ACTION_IF is_ee BEGIN
+	OUTER_SPRINT file-exc ~lk#y1 ~ // Special case: spell bams don't need to be converted.
+	ACTION_BASH_FOR ~%MOD_FOLDER%/bam/~ ~^.+\.bam$~ BEGIN
+		ACTION_TO_LOWER %BASH_FOR_FILE%
+		ACTION_TO_LOWER %BASH_FOR_RES%
+		ACTION_IF (~%file-exc%~ STRING_CONTAINS_REGEXP ~%BASH_FOR_RES%~ = 1) BEGIN
+			COPY ~%BASH_FOR_FILESPEC%~ ~override/%BASH_FOR_FILE%~
+				LPF ~gw_convert_inventory_bam_to_ee~ END
+			BUT_ONLY
+		END ELSE BEGIN
+			COPY ~%BASH_FOR_FILESPEC%~ ~override/%BASH_FOR_FILE%~
+		END
+	END
+END ELSE BEGIN
+	COPY ~%MOD_FOLDER%/bam~	~override~
+END
+
+// Copy creatures
+// --------------
+COPY ~%MOD_FOLDER%/creatures/lk#yesl.cre~		~override/lk#yesl.cre~
+	 ~%MOD_FOLDER%/creatures/lk#yes25.cre~	~override/lk#yes25.cre~
+	SAY NAME1 @31				/* Yeslick */
+	SAY NAME2 @31				/* Yeslick */
+	PATCH_IF Alaghor_kit BEGIN
+		SET kit_id = IDS_OF_SYMBOL(~kit~ ~LK#YK~)
+		WRITE_SHORT 0x244 (kit_id >> 16) & 0xffff
+		WRITE_SHORT 0x246 kit_id & 0xffff 
+	END
+	WRITE_EVALUATED_ASCII DIALOG          ~%DEST_RES%~ #8
+	WRITE_EVALUATED_ASCII DEATHVAR        ~LK#YESLK~ #32
+	WRITE_EVALUATED_ASCII SCRIPT_OVERRIDE ~%DEST_RES%~ #8
+	SAY BIO @32					/* When asked about his past, Yeslick chuckles grimly. "There ain't nothin' there ye be wantin' to know, young 'un. Trust me." From what you have gleaned, Yeslick is peculiar for a dwarf; a follower of Vergadain, the Dwarven god of wealth and luck and Clangeddin, Dwarven god of war, he is an unassuming companion with an aversion to alcohol and the undead. You know little about his history beyond that he grew up in the Dales to the north and that heat makes him extremely irritable. */
+//  SAY MORALE ~~
+	SAY LEADER @33				/* Slow and steady while I'm leader. */
+	SAY TIRED @34				/* Even dwarves need to rest. I can't walk much further. */
+	SAY BORED @35				/* Why'd I leave my cell if I am to stand about doing nothing? */
+	SAY BATTLE_CRY1 @36			/* Argh! */
+	SAY BATTLE_CRY2 @37			/* Clangeddin's might, be with us! */
+	SAY BATTLE_CRY3 @38			/* Begone! */
+	SAY BATTLE_CRY4 @39			/* Enemies we be. */
+	SAY BATTLE_CRY5 @40			/* I swing a mean axe! */
+	SAY DYING @41				/* Aaaauugh! */
+	SAY HURT @42				/* Ill I am! Now when a dwarf says he's sick, you know it's serious! */
+	SAY AREA_DUNGEON @43		/* 'Tis just like the tunnels of my old clan! */
+	SAY AREA_CITY @44			/* A friendly face is a blessed sight in these times. */
+	SAY AREA_FOREST @45			/* Your ego is positively elven! Drop it a notch--lest I do it for you! */
+	SAY AREA_DAY @46			/* I prefer the stone of my cell o'er this wide-open empty! */
+	SAY AREA_NIGHT @47			/* I prefer the stone of my cell o'er this wide-open empty! */
+	SAY SELECT_COMMON1 @48		/* You need something? */
+	SAY SELECT_COMMON2 @49		/* Whate'er ye need! */
+	SAY SELECT_COMMON3 @50		/* Ye need only ask. */
+	SAY SELECT_COMMON4 @51		/* Kind words are always appreciated. */
+//	SAY SELECT_COMMON5 ~~
+//	SAY SELECT_COMMON6 ~~
+	SAY SELECT_ACTION1 @52		/* As you will. */
+	SAY SELECT_ACTION2 @53		/* Clangeddin's will be done. */
+	SAY SELECT_ACTION3 @54		/* Be glad. */
+	SAY SELECT_ACTION4 @55		/* My father? Was a miner. And my mother? Was a miner before him. */
+	SAY SELECT_ACTION5 @56		/* Ay, who's there now? */
+//	SAY SELECT_ACTION6 ~~
+//	SAY SELECT_ACTION7 ~~
+	SAY SELECT_RARE1 @57		/* You load sixteen tons, what do you get? Another day older--and deeper in debt. */
+	SAY SELECT_RARE2 @58		/* Friendships last when gold is long gone. */
+	SAY CRITICAL_HIT @59		/* Erh! */
+	SAY CRITICAL_MISS @60		/* I shouldn't have got out of bed this morn. */
+//	SAY TARGET_IMMUNE ~~
+	SAY INVENTORY_FULL @61		/* 'I've been through enough! */
+	SAY HAPPY @62				/* We do good! 'Tis as my clan was, long ago. */
+	SAY UNHAPPY_ANNOYED @63		/* There be dark horizons if we don't change our ways. */
+	SAY UNHAPPY_SERIOUS @64		/* I've seen enough greed and evil! Change your ways, lest enemies we be! */
+	SAY UNHAPPY_BREAKING @65	/* Ye be no better than the Throne themselves! I'll not stand by while this happens! */
+	SAY SPELL_DISRUPTED @66		/* You needn't take such pleasure in it! */
+	SAY SET_A_TRAP @67			/* Violence solves only the simplest problems. You must think your way through the tough ones. */
+	SAY HIDDEN_IN_SHADOWS @68	/* Watch what you say. */
+	SAY PICKED_POCKET @69		/* 'Twould be good if you tithed a few coins now and then. The favour of gods is worth a few gold. */
+BUT_ONLY
+
+
+/* --------- *
+ *  Appends  *
+ * --------- */
+PRINT @15 /* Appending files... */
+
+APPEND ~interdia.2da~ ~LK#YESLK BLK#YES BLK#YE25~ UNLESS ~LK#YESLK~
+
+APPEND ~pdialog.2da~ ~LK#YESLK LK#YESP LK#YESJ LK#YESD LK#YE25P LK#YE25J LK#YE25D LK#YES25~ UNLESS ~LK#YESLK~
+
+
+/* ------- *
+ *  Items  *
+ * -------- */
+COPY ~%MOD_FOLDER%/items/lk#yesw.itm~ ~override~
+
+
+/* ----------- *
+ *  Epilogues  *
+ * ----------- */
+EXTEND_TOP ~ar6200.bcs~ ~%MOD_FOLDER%/scripts/ar6200.baf~
+
+COPY ~%MOD_FOLDER%/2da/lk#yesep.2da~ ~override~
+//	REPLACE_TEXTUALLY ~PORTRAIT~ ~yeslickL~ Useless
+	REPLACE 99999 @101 /* After the end of his adventures with the Bhaalspawn, Yeslick made his journey back to his home in the Sword Coast. Along the way, he met his old friend Taerom Thunderhammer in Beregost before deciding to start a new and important mission of his own. With his own hands, he began the process of rebuilding the Orothiar mines in the Cloakwood forest, and with it, the future of his clan. It took him five arduous years before his task was complete and his fallen home was restored to its former glory, and Yeslick dedicated every last piece of coin and influence he gathered during his time at <CHARNAME>'s side, but his efforts finally ended in success. The land, now back in the hands of its rightful owner, became a important symbol of dwarven faith and strong will.
+
+Yeslick, having fulfilled his last wishes and knowing his time was at hand, passed away three years later, leaving everything he had in the hands of his trusted partners and friends. His departure was a peaceful one, for his knew that his home was in trusted hands. */
+       

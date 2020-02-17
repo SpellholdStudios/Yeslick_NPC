@@ -172,11 +172,11 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 
 	- New icon for Holy Symbol of Clangeddin (thanks Lava).
 	
-	- Added missing `REQUIRE_PREDICATE` process to avoid installing the mod in inaccurate games.
 
 	- Fixed `ADD_KIT` process: now, Alaghor of Clangeddin kit is restricted to Lawful Neutral and Lawful Good as per description. Added missing lower case kit name.
-	- Removed useless `NAME2` and `DESC` spell strings.
+	- Removed useless `NAME2` and `DESC` spells strings.
 
+	- Added missing `REQUIRE_PREDICATE` process to avoid installing the mod in inaccurate games.
 	- Replaced `AUTHOR` keyword with `SUPPORT`.
 	- `README` command now accepts translated files.
 
@@ -192,8 +192,6 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 	- Added archive libiconv-1.9.2-1-src.7z with iconv licence info.
 TODO
 multi-class
-
-- Moved components tpa files into new "components" folder and kept functions and macros in "lib" folder
 
 	- Replaced READLN actions with SUBCOMPONENTS to support AL|EN's "Project Infinity".
 
