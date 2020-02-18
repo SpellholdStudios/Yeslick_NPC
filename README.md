@@ -31,8 +31,10 @@ He tends to model himself as the father-figure of the group, and can often be fo
 <details>
   <summary>Dispel Magic ability</summary>
   
-  ```For people who remember Yeslick in Baldur's Gate 1, the authors have made the decision that the dwarf may still cast his Dispel Magic ability in SoA-ToB. :smile:
-  ```
+<pre>
+For people who remember Yeslick in Baldur's Gate 1, the authors have made the decision that the dwarf may still cast his Dispel Magic ability in SoA-ToB. :smile:
+</pre>
+
 </details>
 
 Visit the <a href="http://www.spellholdstudios.net/ie/Yeslick">website</a> or <a href="http://www.shsforums.net/forum/608-Yeslick/">forum</a> for all the latest updates.
