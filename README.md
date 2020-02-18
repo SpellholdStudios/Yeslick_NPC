@@ -159,16 +159,18 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 - <ins>Major updates</ins>:
 	- Added *yeslicknpc.ini* metadata file to support AL|EN's "Project Infinity".
 
-	- Converted inventory BAMs to EE: This feature attempts to modify traditional inventory BAMs so that both the large and small icons are utilized by the EE games. The inventory BAM must have two sequences, the first containing the "large" inventory icon frame and the second containing the "small" inventory icon frame to be processed. Inventory icon BAMs in the bam folder that meet these requirements are patched and saved back to the override folder.
+	- Components: added `DESIGNATED` numbers and "*yeslick_npc_bg2_fighter-cleric*" "*yeslick_npc_bg2_alaghor_of_clangeddin*" `LABELS`.
+	- Made Yeslick an Alaghor of Clangeddin Fighter-Priest an optional subcomponent.
 
-- Made Yeslick an Alaghor of Clangeddin Fighter-Priest an optional subcomponent.
+	- EE games: included Aquadrizzt's qd_multiclass which installs multiclass kits in the Enhanced Infinity Engine (v2.0+). It enables multiclass kits to both appear properly in character creation and apply the appropriate bonuses during character advancement. Thanks Aquadrizzt!
+
 	- Increased Yeslick XP to fit game standards: 110 000 XP (F6-C7) in SoA and 2 500 000 (F13-C13) in ToB. Accordingly updated his HP, stats and spells (known and memorized).
-	- Fixed Yeslick cre files: effects updated to v2, removed useless SPIN112 and druidic spells (:astonished:), and many minor glitches.
+	- Fixed Yeslick cre files: effects updated to v2, removed inaccurate memorized druidic spells (:astonished:), and many minor glitches.
 	- Removed ADD_KIT process by script and added kit value to cre files (by patch).
 
-	- Externalized tp2 code into *main_component.tpa* library for more comfortable readability and maintenance.
+	- Converted inventory BAMs to EE: This feature attempts to modify traditional inventory BAMs so that both the large and small icons are utilized by the EE games. The inventory BAM must have two sequences, the first containing the "large" inventory icon frame and the second containing the "small" inventory icon frame to be processed. Inventory icon BAMs in the bam folder that meet these requirements are patched and saved back to the override folder.
 
-	- Components: added `DESIGNATED` numbers and "*yeslick_npc_bg2_fighter-cleric*" "*yeslick_npc_bg2_alaghor_of_clangeddin*" `LABELS`.
+	- Externalized tp2 code into *main_component.tpa* library for more comfortable readability and maintenance.
 
 	- Included Linux and Mac Os X versions in the same package (thanks AL|EN!).
 	- Uploaded mod to official SpellHold Studios GitHub mirror account.
@@ -176,8 +178,8 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 
 - <ins>Minor updates</ins>:
 	- Fixed Yeslick portraits in EE games.
-	- New icon for Holy Symbol of Clangeddin (thanks Lava).
-
+	- New icon for *Holy Symbol of Clangeddin* (thanks Lava).
+	- Fixed *Spiritual Axe* which now deals 1d8 damage (half slashing and magic).
 	- Fixed `ADD_KIT` process: now, Alaghor of Clangeddin kit is restricted to Lawful Neutral and Lawful Good as per description. Added missing lower case kit name.
 	- Removed useless `NAME2` and `DESC` spells strings.
 
@@ -185,6 +187,7 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 	- Replaced `AUTHOR` keyword with `SUPPORT`.
 	- `README` command now accepts translated files.
 
+	- Added abilities descriptions (EE games).
 	- Updated English translation for compatibility with GW_UPDATE_ITM_DESCRIPTION_TO_EE WeiDU function requirements which automatically removes usability restrictions for EE games ; and integrated BWP Fixpack tokens typos fix.
 	- Split setup.tra file into separate thematic files for more comfortable readability.
 
@@ -198,7 +201,6 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 
 TODO
 multi-class after testing
-- EE games: included Aquadrizzt's qd_multiclass which installs multiclass kits in the Enhanced Infinity Engine (v2.0+). It enables multiclass kits to both appear properly in character creation and apply the appropriate bonuses during character advancement. Thanks Aquadrizzt!
 
 ## 
 
