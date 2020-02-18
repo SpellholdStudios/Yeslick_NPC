@@ -165,8 +165,8 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 	- EE games: included Aquadrizzt's qd_multiclass which installs multiclass kits in the Enhanced Infinity Engine (v2.0+). It enables multiclass kits to both appear properly in character creation and apply the appropriate bonuses during character advancement. Thanks Aquadrizzt!
 
 	- Increased Yeslick XP to fit game standards: 110 000 XP (F6-C7) in SoA and 2 500 000 (F13-C13) in ToB. Accordingly updated his HP, stats and spells (known and memorized).
-	- Fixed Yeslick cre files: effects updated to v2, removed inaccurate memorized druidic spells (:astonished:), and many minor glitches.
-	- Removed ADD_KIT process by script and added kit value to cre files (by patch).
+	- Fixed Yeslick .cre files: effects updated to v2, removed inaccurate memorized druidic spells (:astonished:), and a few minor glitches.
+	- Removed ADD_KIT process by script and added kit value into .cre files (by patch).
 
 	- Converted inventory BAMs to EE: This feature attempts to modify traditional inventory BAMs so that both the large and small icons are utilized by the EE games. The inventory BAM must have two sequences, the first containing the "large" inventory icon frame and the second containing the "small" inventory icon frame to be processed. Inventory icon BAMs in the bam folder that meet these requirements are patched and saved back to the override folder.
 
