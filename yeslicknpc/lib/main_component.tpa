@@ -143,15 +143,19 @@ END
 COPY ~%MOD_FOLDER%/creatures/lk#yesl.cre~		~override/lk#yesl.cre~
 	 ~%MOD_FOLDER%/creatures/lk#yes25.cre~	~override/lk#yes25.cre~
 	SAY NAME1 @31				/* Yeslick */
-	SAY NAME2 @31				/* Yeslick */
+	SAY NAME2 @31
+	PATCH_IF is_ee BEGIN
+		WRITE_ASCII 0x34 ~YESLICKM~ #8
+		WRITE_ASCII 0x3c ~YESLICKL~ #8
+	END
 	PATCH_IF Alaghor_kit BEGIN
 		SET kit_id = IDS_OF_SYMBOL(~kit~ ~LK#YK~)
 		WRITE_SHORT 0x244 (kit_id >> 16) & 0xffff
 		WRITE_SHORT 0x246 kit_id & 0xffff 
 	END
-	WRITE_EVALUATED_ASCII DIALOG          ~%DEST_RES%~ #8
-	WRITE_EVALUATED_ASCII DEATHVAR        ~LK#YESLK~ #32
-	WRITE_EVALUATED_ASCII SCRIPT_OVERRIDE ~%DEST_RES%~ #8
+	WRITE_ASCIIE DIALOG          ~%DEST_RES%~ #8
+	WRITE_ASCIIE DEATHVAR        ~LK#YESLK~ #32
+	WRITE_ASCIIE SCRIPT_OVERRIDE ~%DEST_RES%~ #8
 	SAY BIO @32					/* When asked about his past, Yeslick chuckles grimly. "There ain't nothin' there ye be wantin' to know, young 'un. Trust me." From what you have gleaned, Yeslick is peculiar for a dwarf; a follower of Vergadain, the Dwarven god of wealth and luck and Clangeddin, Dwarven god of war, he is an unassuming companion with an aversion to alcohol and the undead. You know little about his history beyond that he grew up in the Dales to the north and that heat makes him extremely irritable. */
 //  SAY MORALE ~~
 	SAY LEADER @33				/* Slow and steady while I'm leader. */
