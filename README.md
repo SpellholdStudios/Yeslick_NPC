@@ -28,6 +28,12 @@ He tends to model himself as the father-figure of the group, and can often be fo
 
 >*When asked about his past, Yeslick chuckles grimly. "There ain't nothin' there ye be wantin' to know, young 'un. Trust me." From what you have gleaned, Yeslick is peculiar for a dwarf; a follower of Vergadain, the Dwarven god of wealth and luck and Clangeddin, Dwarven god of war, he is an unassuming companion with an aversion to alcohol and the undead. You know little about his history beyond that he grew up in the Dales to the north and that heat makes him extremely irritable.*
 
+<details>
+  <summary>Dispel Magic ability</summary>
+  
+  ```For people who remember Yeslick in Baldur's Gate 1, the authors have made the decision that the dwarf may still cast his Dispel Magic ability in SoA-ToB. :smile:
+  ```
+</details>
 
 Visit the <a href="http://www.spellholdstudios.net/ie/Yeslick">website</a> or <a href="http://www.shsforums.net/forum/608-Yeslick/">forum</a> for all the latest updates.
 
