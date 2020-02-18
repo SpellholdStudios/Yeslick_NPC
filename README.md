@@ -27,21 +27,10 @@ This mod brings Yeslick from Baldur's Gate to BGII: SoA and ToB, with an extensi
 He tends to model himself as the father-figure of the group, and can often be found trying to help the party to reach their potential... to mixed results. He has a kind heart and a steady hand, and is loyal to the PC to the end.
 
 >*When asked about his past, Yeslick chuckles grimly. "There ain't nothin' there ye be wantin' to know, young 'un. Trust me." From what you have gleaned, Yeslick is peculiar for a dwarf; a follower of Vergadain, the Dwarven god of wealth and luck and Clangeddin, Dwarven god of war, he is an unassuming companion with an aversion to alcohol and the undead. You know little about his history beyond that he grew up in the Dales to the north and that heat makes him extremely irritable.*
+<br>
 
-<details>
-  <summary>Dispel Magic ability</summary>
-  
-  ```
-For people who remember Yeslick in Baldur's Gate 1, the authors have made the decision that the dwarf may still 
-cast his Dispel Magic ability in SoA-ToB. :smile:
-  ```
-
-</details>  
-
->! For people who remember Yeslick in Baldur's Gate 1, the authors have made the decision that the dwarf may still cast his Dispel Magic ability in SoA-ToB. :smile:
-
-<details><summary>Dispel Magic ability</summary>
-<p>
+<details><summary>###### Yeslick's Dispel Magic ability</summary>
+<br><p>
 For people who remember Yeslick in Baldur's Gate 1, the authors have made the decision that the dwarf may still cast his Dispel Magic ability in SoA-ToB. :smile:
 </p>
 </details><br>
@@ -54,7 +43,6 @@ Visit the <a href="http://www.spellholdstudios.net/ie/Yeslick">website</a> or <a
 
 
 ## <a name="compat" id="compat"></a>Compatibility
-
 
 This mod is designed to work on the following Infinity Engine games: the original Baldur's Gate II (BG2 or just SoA) with the Throne of Bhaal (ToB) expansion, Baldur's Gate II: Enhanced Edition (BG2EE), the conversion projects Baldur's Gate Trilogy (BGT) and Enhanced Edition Trilogy (EET).
 
