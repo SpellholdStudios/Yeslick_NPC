@@ -1,0 +1,189 @@
+/* ================================================= *
+ *         Cleric Kit: Alaghor of Clangeddin         *
+ * ================================================= */
+
+
+/* ------------- *
+ *  Install kit  *
+ * ------------- */
+
+ADD_KIT ~LK#YK~
+// CLASS WEAPON PROFICIENCIES____________________________________________________________________________________
+// CLASWEAP			SMALL_SWORD	LARGE_SWORD		BLUNT       MISSILE     BOW         SPIKED      AXE         SPEAR
+~LK#YK                   0           0           0           0           0           0           0           0~		// Types d'armes autorisés
+// WEAPON PROFICIENCIES______________________________________________________________________________________________________
+//                                      B       T   S           F   Q             S S
+//                                      A       W   C           L   U             W I T
+//                      L S             S   S   O   I           A   A           T O N W
+//                      A M             T L H   H   M   W       I   R           W R G O
+//                      R A             A O O   A   I   A       L   T C   S     O D L -
+//                      G L           M R N R   N   T   R     H M   E R L H     - & E W E E E E E E E E E E E E E E E E E E E
+//                      E L       S   I D G T   D K A D H     A O   R O O O     H S W E X X X X X X X X X X X X X X X X X X X
+//                      S S   S B P   S S S S   E A R A A   S L R   S S N R   S A H E A T T T T T T T T T T T T T T T T T T T
+//                      W W   P L I   S W W W   D T W G M C P B N M T S G T D L N I A P R R R R R R R R R R R R R R R R R R R
+//                      O O B E U K A I O O O A S A A G M L E E I A A B B B A I D E P O A A A A A A A A A A A A A A A A A A A
+//                      R R O A N E X L R R R X W N K E E U A R N C F O O O R N E L O N 2 3 4 5 6 7 8 9 1 1 1 1 1 1 1 1 1 1 2
+// WEAPPROF.2DA         D D W R T D E E D D D E O A I R R B R D G E F W W W T G D D N S                 0 1 2 3 4 5 6 7 8 9 0
+~LK#YK                  0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0~	// Compétences autorisées
+// MINIMUM KIT STATS_______________________________________________
+// ABCLASRQ.2DA         STR      DEX    CON     INT     WIS     CHR
+~LK#YK                   0        0      0        0      9       0~							// Scores de caractéristiques minimaux nécessaires.
+// KIT STAT MODIFIERS_______________________________________________
+// ABCLSMOD.2DA         STR      DEX    CON     INT     WIS     CHR
+~LK#YK                   0        0      0       0       0        0~						// Modificateurs des scores de caractéristiques.
+// REQUIREMENTS TO DUAL TO THIS KIT________________________________
+// ABDCDSRQ.2DA         STR      DEX    CON     INT     WIS     CHR
+~LK#YK                   0       0       0       0       0       0~							// Caractéristiques minimales pour se jumeler VERS le kit.
+// REQUIREMENTS TO DUAL FROM THIS KIT______________________________
+// ABDCSCRQ.2DA         STR      DEX    CON     INT     WIS     CHR
+~LK#YK                   0       0       0       0       0       0~							// Caractéristiques minimales pour se jumeler DEPUIS le kit.
+// ALIGNMENT RESTRICTIONS_________________________________________________________________
+// ALIGNMNT.2DA         LG      LN      LE      NG      NN      NE      CG      CN      CE
+~LK#YK                   1       1       0       0       0       0       0       0       0~	// Alignements autorisés.
+// DUAL CLASS OPTIONS______________________________________________
+// DUALCLASS.2DA        FIG     CLE     MAG     THI     DRU     RAN
+~LK#YK                   0       0       0       0       0       0~							// Possibilités de jumelage.
+// KIT ABILITIES 2DA FILE (path to CLAB-type file)
+~yeslicknpc/2da/lk#yk.2da~																	// Habilités gagnées par niveau.
+// RACIAL KIT AVAILABILITY___________________________________________________________
+// KITTABLE.2DA    P = Paladin - H = Humain - E = Elf - HE = Half-Elf - HL = Halfling
+~~																							// Races et classes acceptant le kit.
+// UNUSABLE FLAGS AND KIT BASE CLASS
+// CLASSES: Mage = 1, Fighter = 2, Cleric = 3, Thief = 4, Bard = 5, Paladin 6, Druid = 11, Ranger = 12, Sorcerer = 19, Monk = 20
+// KITLIST.2DA
+~0x00100000     3~	// Autorisation d'objets - 0x00100000 = SWASHBUCKLER
+// HIGH LEVEL ABILITIES ABBREVIATION
+// LUABBR.2DA
+~Cl0~																						// Habiletés de Haut niveau.
+// TOB STARTING EQUIPMENT_________________________________________________________________________________________________________________________________________________
+//                                                                                   B                                                                                   W
+//                          S                                    C            A      R                                                                                   E
+//                 A        H                     R      R       L     B      M      A              A         A         A         M        M        M       M     M      A
+//                 R        I        H            I      I       O     O      U      C      B       M         M         M         I        I        I       I     I      P
+//                 M        E        E      B     N      N       A     O      L      E      E       M         M         M         S        S        S       S     S      O
+//                 O        L        L      A     G      G       C     T      E      R      L       O         O         O         C        C        C       C     C      N
+// 25STWEAP.2DA    R        D        M      G     1      2       K     S      T      S      T       1         2         3         1        2        3       4     5      1
+				~PLAT04     *      HELM07 BAG20 RING07 RING31    *   BOOT01 AMUL20 BRAC09 BELT04  SW1H31    CLCK07    SHLD24    BAG02    BAG04      *       *     *      *~
+
+// CHARACTER CREATION KIT DESCRIPTION
+// KITLIST.2DA
+SAY @21				// LOWER = Nom du kit en minuscules (alaghor of clangeddin)
+SAY @22				// MIXED = Nom du kit en minuscules avec majuscule au début (Alaghor of Clangeddin)
+SAY @23				// HELP  = Description du kit
+
+
+// EE specific
+// -----------
+LAF fl#add_kit_ee
+	INT_VAR
+		//CLASTEXT.2DA       BIOGRAPHY
+//	    biography     = ~~
+		//CLASTEXT.2DA       BRIEFDESC
+//	    briefdesc     = ~kit_briefdesc~
+		//CLASTEXT.2DA       FALLEN
+//	    fallen        = ~0~
+		//CLASTEXT.2DA       FALLEN_NOTICE
+//	    fallen_notice = ~-1~
+	STR_VAR
+		//internal kit name
+		kit_name	= ~LK#YK~
+		//BACKSTAB.2DA       0     1     2     3     4     5     6     7     8     9     10     11     12     13     14     15     16     17     18     19     20     21     22     23     24     25     26     27     28     29     30     31     32     33     34     35     36     37     38     39     40     41     42     43     44     45     46     47     48     49     50
+//		backstab	= ~~																																	// Inherit from parent class
+		//CLSWPBON.2DA		GETS_PROF_APR       UNARMED_DIVISOR     ZERO_SKILL_THAC0
+//		clswpbon	= ~0                   0                   3~																							// Inherit from parent class
+		//NUMWSLOT.2DA		SLOTS
+//		numwslot	= ~2~																																	// Inherit from parent class
+		//THIEFSKL.2DA		START_POINTS       LEVEL_POINTS
+//		thiefskl	= ~~																																	// Inherit from parent class
+		//TRAPLIMT.2DA		LIMIT
+//		traplimt	= ~~																																	// Inherit from parent class
+		//CLASCOLR.2DA METAL     MINOR_CLOTH     MAIN_CLOTH     LEATHER     ARMOR
+//		clascolr	= ~66        136             136            66          66~
+		//CLASISKL.2DA		START_POINTS     OPEN_LOCKS     FIND_TRAPS     MOVE_SILENTLY     HIDE_IN_SHADOWS     DETECT_ILLUSION     SET_TRAPS
+//		clasiskl	=		~0                0              0              0                 0                   0                   0~					// Inherit from parent class
+		//THIEFSCL.2DA       PICK_POCKETS     OPEN_LOCKS     FIND_TRAPS     MOVE_SILENTLY     HIDE_IN_SHADOWS     DETECT_ILLUSION     SET_TRAPS     STEALTH
+//		thiefscl	=			~100              100            100            100               100                 100                 0             0~	// Inherit from parent class
+		//HPCLASS.2DA		TABLE
+//		hpclass		= ~HPROG~																																// Inherit from parent class
+		//CLSRCREQ.2DA		HUMAN               ELF                 HALF_ELF            DWARF               HALFLING            GNOME               HALFORC
+//		clsrcreq	=		~1                   0                   0                   0                   0                   0                   0~
+		//CLASTHAC.2DA		BONUS
+//		clasthac	= ~0~																																	// Inherit from parent class
+		//SNEAKATT.2DA   0     1     2     3     4     5     6     7     8     9     10     11     12     13     14     15     16     17     18     19     20     21     22     23     24     25     26     27     28     29     30     31     32     33     34     35     36     37     38     39     40     41     42     43     44     45     46     47     48     49     50
+//		sneakatt	= ~~
+		//CRIPPSTR.2DA 	 0     1     2     3     4     5     6     7     8     9     10     11     12     13     14     15     16     17     18     19     20     21     22     23     24     25     26     27     28     29     30     31     32     33     34     35     36     37     38     39     40     41     42     43     44     45     46     47     48     49     50
+//		crippstr	= ~~
+END
+
+// Multi-class kit for EE games
+// ----------------------------
+ACTION_IF is_ee BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/qd_multiclass.tpa~	// Enables multiclass kits to both appear properly in character creation and apply the appropriate bonuses during character advancement. Thanks Aquadrizzt!
+	LAF ~qd_multiclass~
+		STR_VAR
+			kit_name = ~LK#YK~
+			kit_clab = ~lk#yk~
+			base_class = ~P~
+	END
+END
+
+
+/* ---------------- *
+ *  Install spells  *
+ * ---------------- */
+
+// Clangeddin's Strength
+// ---------------------
+COPY_EXISTING ~SPWI214.spl~ ~override/lk#y2.spl~
+	WRITE_SHORT 0x1c 4
+	WRITE_LONG  0x34 1
+	READ_LONG   0x64 "offset_abil"
+	READ_SHORT  0x68 "num_abil"
+	READ_ASCII ("%offset_abil%" + 0x04) "bam"
+	WRITE_EVALUATED_ASCII 0x3a "%bam%"
+	SAY NAME1 @24
+	SAY UNIDENTIFIED_DESC @25
+	WHILE (0 < "%num_abil%") BEGIN
+		WRITE_SHORT (("%offset_abil%" + 0x02) + (("%num_abil%" - 1) * 0x28)) 4
+		SET "num_abil" = ("%num_abil%" - 1)
+	END
+BUT_ONLY
+
+// Blade Barrier - Axe Storm of Clangeddin
+// ---------------------------------------
+COPY_EXISTING ~SPPR603.spl~ ~override/lk#y3.spl~
+	WRITE_SHORT 0x1c 4
+	WRITE_LONG  0x34 1
+	READ_LONG   0x64 "offset_abil"
+	READ_SHORT  0x68 "num_abil"
+	READ_ASCII ("%offset_abil%" + 0x04) "bam"
+	WRITE_EVALUATED_ASCII 0x3A "%bam%"
+	SAY NAME1 @26
+	SAY UNIDENTIFIED_DESC @27
+	WHILE (0 < "%num_abil%") BEGIN
+		WRITE_SHORT (("%offset_abil%" + 0x02) + (("%num_abil%" - 1) * 0x28)) 4
+		SET "num_abil" = ("%num_abil%" - 1)
+	END
+BUT_ONLY
+
+// Spiritual Axe
+// -------------
+COPY ~%MOD_FOLDER%/spells/lk#y1.spl~ ~override/lk#y1.spl~
+	SAY NAME1 @28
+	SAY UNIDENTIFIED_DESC @29
+BUT_ONLY
+
+COPY ~%MOD_FOLDER%/items/lk#y1a.itm~ ~override/lk#y1a.itm~
+	SAY NAME1 @28
+BUT_ONLY
+
+
+/* --------------------------- *
+ *  Holy Symbol of Clangeddin  *
+ * --------------------------- */
+
+COPY ~%MOD_FOLDER%/items/lk#ysy1i.itm~ ~override/lk#ysy1i.itm~
+	SAY NAME1 @30
+	SAY NAME2 @30
+	LPF ~GW_WRITE_EE_ITM_DESCRIPTIONS~ STR_VAR GW_desc_to_update = "@300" END
+BUT_ONLY

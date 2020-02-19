@@ -10,7 +10,7 @@ SUPPORT ~http://www.shsforums.net/forum/609-yeslick/~
 
 VERSION ~3.0~
 
-README ~yeslicknpc/yeslicknpc-readme-%LANGUAGE%.html~ ~yeslicknpc/yeslicknpc-readme-readme-english.html~
+README ~yeslicknpc/readme/yeslicknpc-readme-%LANGUAGE%.html~ ~yeslicknpc/readme/yeslicknpc-readme-readme-english.html~
 
 
 ALWAYS
