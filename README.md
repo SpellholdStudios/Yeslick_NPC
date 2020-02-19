@@ -16,7 +16,7 @@ Baldur's Gate Trilogy and EET<h3>
 
 
 <div align="center">
-<a href="#intro">Overview</a> &#x2B25; <a href="#compat">Compatibility</a> &#x2B25; <a href="#installation">Installation</a> &#x2B25; <a href="#faq">FAQ</a> &#x2B25; <a href="#credits">Credits</a> &#x2B25; <a href="#versions">Versions History</a></br>
+<a href="#intro">Overview</a> &#x2B25; <a href="#compat">Compatibility</a> &#x2B25; <a href="#installation">Installation</a> &#x2B25; <a href="#component">Components</a> &#x2B25; <a href="#faq">FAQ</a> &#x2B25; <a href="#credits">Credits</a> &#x2B25; <a href="#versions">Versions History</a></br>
 </div>
 
 
@@ -29,7 +29,7 @@ He tends to model himself as the father-figure of the group, and can often be fo
 >*When asked about his past, Yeslick chuckles grimly. "There ain't nothin' there ye be wantin' to know, young 'un. Trust me." From what you have gleaned, Yeslick is peculiar for a dwarf; a follower of Vergadain, the Dwarven god of wealth and luck and Clangeddin, Dwarven god of war, he is an unassuming companion with an aversion to alcohol and the undead. You know little about his history beyond that he grew up in the Dales to the north and that heat makes him extremely irritable.*
 <br>
 
-<details><summary>**<ins>Yeslick's Dispel Magic ability</ins>**</summary>
+<details><summary><strong><ins>Yeslick's Dispel Magic ability</ins></strong></summary>
 <br><p>
 For people who remember Yeslick in Baldur's Gate, the authors have made the decision that the dwarf may still cast his Dispel Magic ability in SoA-ToB. :smile:
 </p>
@@ -84,6 +84,21 @@ Run **`setup-yeslicknpc.exe`** in your game folder to reinstall, un-install or o
 #### Note for Complete Un-installation
 
 In addition to the methods above for removing individual components, you can completely un-install the mod using **`setup-yeslicknpc --uninstall`** at the command line to remove all components without wading through prompts.</br>
+<div align="right"><a href="#top">Back to top</a></div>
+
+
+<hr>
+
+
+## <a name="components" id="components"></a>Components
+
+As of v3.0, the installer splitts main component into two sub components, letting the player decide if he wants Yeslick to be an Alaghor of Clangeddin Fighter-Priest.  
+The number of each is the component DESIGNATED number which gives it a fixed install position and allows automated installers to specify component choices.<br /><br />
+
+
+**Yeslick NPC for BGII: SoA & ToB**<br />
+**0. Yeslick is a regular Fighter-Cleric**
+**1. Yeslick is a Fighter-Alaghor of Clangeddin (Cleric kit)**
 <div align="right"><a href="#top">Back to top</a></div>
 
 
