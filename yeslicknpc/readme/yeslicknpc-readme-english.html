@@ -306,7 +306,7 @@
 			Authors: Pixel Kaiser, K'aeloree, Lava Del'Vortel
 		</p>
 		<p class="about">
-			<a href="http://www.spellholdstudios.net/ie/yeslick">Mod Website</a> &#8226; <a href="http://www.shsforums.net/forum/609-yeslick/">Mod Forum</a> &#8226; <a href="http://www.shsforums.net/files/file/992-yeslick/">Download</a> &#8226; Version 3.0
+			<a href="http://www.spellholdstudios.net/ie/yeslick">Mod Website</a> &#8226; <a href="http://www.shsforums.net/forum/609-yeslick/">Mod Forum</a> &#8226; <a href="http://www.shsforums.net/files/file/992-yeslick/">Download</a> &#8226; <a href="https://github.com/SpellholdStudios/Yeslick_NPC/releases/latest">Github</a> &#8226; Version 3.0
 		</p>
 		<hr style="margin: 10px 0 10px 0; padding: 0; height: 1px; border: 0; color: #aaa; background-color: #aaa;" />
 
@@ -583,28 +583,19 @@
 
 		<h2>Version history</h2><br>
 
-		<h6>Version 3.0 ( February 2020)</h6>
+		<h6>Version 3.0 (19 February 2020)</h6>
  
 		  <h5><span style="font-weight: normal;text-decoration: underline;">Major updates</span>:</h5>
 		  <ul style="width: 92%">
 			<li>Added <em>yeslicknpc.ini</em> metadata file to support AL|EN's "Project Infinity"</li>
-			<li></li>
 			<li>Components: added <em>DESIGNATED</em> numbers and "<em>yeslick_npc_bg2_fighter-cleric</em>" "<em>yeslick_npc_bg2_alaghor_of_clangeddin</em>" LABELS.</li>
-			<li></li>
-
-			<li>EE games: included Aquadrizzt's qd_multiclass which installs multiclass kits in the Enhanced Infinity Engine (v2.0+). It enables multiclass kits to both appear properly in character creation and apply the appropriate bonuses during character advancement. Thanks Aquadrizzt!</li>
-
 			<li>Made Yeslick an Alaghor of Clangeddin Fighter-Priest an optional subcomponent.</li>
+			<li>EE games: included Aquadrizzt's qd_multiclass which installs multiclass kits in the Enhanced Infinity Engine (v2.0+). It enables multiclass kits to both appear properly in character creation and apply the appropriate bonuses during character advancement. Thanks Aquadrizzt!</li>
 			<li>Increased Yeslick XP to fit game standards: 110 000 XP (F6-C7) in SoA and 2 500 000 (F13-C13) in ToB. Accordingly updated his HP, stats and spells (known and memorized).</li>
 			<li>Fixed Yeslick .cre files: effects updated to v2, removed inaccurate memorized druidic spells &#128565;, and a few minor glitches.</li>
-
 			<li>Removed ADD_KIT process by script and added kit value into .cre files (by patch).</li>
-
 			<li>Converted inventory BAMs to EE: This feature attempts to modify traditional inventory BAMs so that both the large and small icons are utilized by the EE games. The inventory BAM must have two sequences, the first containing the "large" inventory icon frame and the second containing the "small" inventory icon frame to be processed. Inventory icon BAMs in the bam folder that meet these requirements are patched and saved back to the override folder.</li>
-
 			<li>Externalized tp2 code into <em>main_component.tpa</em> library for more comfortable readability and maintenance.</li>
-			<li></li>
-			<li></li>
 			<li>Included Linux and Mac Os X versions in the same package (thanks AL|EN!).</li>
 			<li>Uploaded mod to official SpellHold Studios GitHub mirror account.</li>
 		  </ul>
@@ -613,27 +604,23 @@
 		  <ul style="width: 92%">
 			<li>Fixed Yeslick portraits in EE games.</li>
 			<li>New icon for <em>Holy Symbol of Clangeddin</em> (thanks Lava).</li>
+			<li>Fixed <em>Holy Symbol of Clangeddin</em> restriction flags.
 			<li>Fixed <em>Spiritual Axe</em> ability which now deals 1d8 damage (half slashing and magic).</li>
-
 			<li>Fixed <em>ADD_KIT</em> process: now, Alaghor of Clangeddin kit is restricted to Lawful Neutral and Lawful Good as per description. Added missing lower case kit name.</li>
+			<li>Added abilities descriptions (EE games).</li>
 			<li>Removed useless <em>NAME2</em> and <em>DESC</em> spells strings.</li>
-			<li></li>
 			<li>Added missing <em>REQUIRE_PREDICATE</em> process to avoid installing the mod in inaccurate games.</li>
 			<li>Replaced <em>AUTHOR</em> keyword with <em>SUPPORT</em>.</li>
 			<li><em>README</em> command now accepts translated files.</li>
-			<li></li>
-			<li>Updated deprecated modding tools links.</li>
-			<li>Updated and renamed readme file to<em>yeslicknpc-readme-english.html</em></li>
-
-			<li>Added abilities descriptions (EE games).</li>
 			<li>Updated English translation for compatibility with GW_UPDATE_ITM_DESCRIPTION_TO_EE WeiDU function requirements which automatically removes usability restrictions for EE games ; and integrated BWP Fixpack tokens typos fix.</li>
 			<li>Split setup.tra file into separate thematic files for more comfortable readability.</li>
+			<li>Updated deprecated modding tools links.</li>
+			<li>Updated, re-formatted and renamed readme file to<em>yeslicknpc-readme-english.html</em></li>
 			<li>Reorganized mod architecture tree: created <em>lib</em> and <em>readme</em> folders to sort files according to their types, renamed <em>images</em> folder to <em>bam</em> folder.</li>
 			<li>Removed useless files and backup folder.</li>
 			<li>Lower cased files.</li>
 			<li>Added archive libiconv-1.9.2-1-src.7z with iconv licence info.</li>
 		  </ul><br>
-
 
 		<h6>Version 2.0 (22nd July 2018)</h6>
 		  <ul>
