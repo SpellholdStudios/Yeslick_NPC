@@ -20,9 +20,8 @@ INCLUDE ~%MOD_FOLDER%/lib/gw_functions.tpa~						// Loads macros and functions l
 INCLUDE ~%MOD_FOLDER%/lib/gw_convert_inventory_bam_to_ee.tpa~	// Loads function converting inventory BAMs to EE.
 INCLUDE ~%MOD_FOLDER%/lib/fl#add_kit_ee.tpa~
 
-ACTION_IF is_ee BEGIN
+ACTION_IF is_eet BEGIN
 	INCLUDE ~%MOD_FOLDER%/lib/eet.tph~
-	INCLUDE ~%MOD_FOLDER%/functions.tph~
 END
 
 
@@ -62,7 +61,7 @@ END
 /* ------------------------ *
  *  Compiling dialogues...  *
  * ------------------------ */
-PRINT @12 /* Compiling dialogue... */
+PRINT @12 /* Compiling dialogues... */
 
 COMPILE	~%MOD_FOLDER%/dialogue/lk#yesl.d~
 		~%MOD_FOLDER%/dialogue/lk#yesj.d~
@@ -93,7 +92,7 @@ ACTION_IF is_eet BEGIN
 			traFile = EVAL "yeslicknpc/translations/%LANGUAGE%/fatesp.tra"
 			string = "@0"
 			stringPosDV = "Wilson"
-	  END
+	END
 END ELSE BEGIN
 	COMPILE ~%MOD_FOLDER%/dialogue/fatesp.d~
 END
