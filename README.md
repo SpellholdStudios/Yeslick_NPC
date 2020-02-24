@@ -174,13 +174,14 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 
 ## <a name="versions" id="versions"></a>Versions History
 
-##### Versions 3.0 (February 19, 2020)
+##### Versions 3.0 (February 24, 2020)
 
 - <ins>Major updates</ins>:
 	- Added *yeslicknpc.ini* metadata file to support AL|EN's "Project Infinity".
-	- Components: added `DESIGNATED` numbers and "*yeslick_npc_bg2_fighter-cleric*" "*yeslick_npc_bg2_alaghor_of_clangeddin*" `LABELS`.
+	- Components: added `DESIGNATED` numbers and "*yeslick_npc_bg2_fighter-cleric*" and "*yeslick_npc_bg2_alaghor_of_clangeddin*" `LABELS`.
 	- Made Yeslick an Alaghor of Clangeddin Fighter-Priest an optional subcomponent.
-	- EE games: included Aquadrizzt's qd_multiclass which installs multiclass kits in the Enhanced Infinity Engine (v2.0+). It enables multiclass kits to both appear properly in character creation and apply the appropriate bonuses during character advancement. Thanks Aquadrizzt!
+	- EE games: included Aquadrizzt's qd_multiclass which installs multiclass kits in the Enhanced Infinity Engine (v2.0+). It enables multiclass kits to both appear properly in character creation and apply the appropriate bonuses during character advancement. Thanks Aquadrizzt and Subtledoctor!
+	- Renamed LK#YK kit id to LK_ALAGHOR.
 	- Increased Yeslick XP to fit game standards: 110 000 XP (F6-C7) in SoA and 2 500 000 (F13-C13) in ToB. Accordingly updated his HP, stats and spells (known and memorized).
 	- Fixed Yeslick .cre files: effects updated to v2, removed inaccurate memorized druidic spells (:astonished:), and a few minor glitches.
 	- Removed ADD_KIT process by script and added kit value into .cre files (by patch).
