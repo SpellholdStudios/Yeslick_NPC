@@ -15,6 +15,12 @@ Baldur's Gate Trilogy and EET<h3>
 **Mod Forum:** <a href="http://www.shsforums.net/forum/609-yeslick/">Yeslick</a><br /><br />
 
 
+[Read the mod's readme](http://spellholdstudios.github.io/readmes/yeslicknpc-readme-english.html.html).
+
+[Download the mod at Spellhold Studios](http://www.shsforums.net/files/file/992-yeslick/).<br>
+
+&nbsp;
+
 <div align="center">
 <a href="#intro">Overview</a> &#x2B25; <a href="#compat">Compatibility</a> &#x2B25; <a href="#installation">Installation</a> &#x2B25; <a href="#components">Components</a> &#x2B25; <a href="#faq">FAQ</a> &#x2B25; <a href="#credits">Credits</a> &#x2B25; <a href="#versions">Versions History</a></br>
 </div>
