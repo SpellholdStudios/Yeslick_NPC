@@ -180,14 +180,13 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 
 ## <a name="versions" id="versions"></a>Versions History
 
-##### Versions 3.0 (February 24, 2020)
-
-
 ##### Versions 4.0 (18 April 2020)
 
 - Fixed EET install.
 
 ## 
+
+##### Versions 3.0 (February 24, 2020)
 
 - <ins>Major updates</ins>:
 	- Added *yeslicknpc.ini* metadata file to support AL|EN's "Project Infinity".
@@ -201,24 +200,22 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 	- Converted inventory BAMs to EE: This feature attempts to modify traditional inventory BAMs so that both the large and small icons are utilized by the EE games. The inventory BAM must have two sequences, the first containing the "large" inventory icon frame and the second containing the "small" inventory icon frame to be processed. Inventory icon BAMs in the bam folder that meet these requirements are patched and saved back to the override folder.
 	- Externalized tp2 code into *main_component.tpa* library for more comfortable readability and maintenance.
 	- Included Linux and Mac Os X versions in the same package (thanks AL|EN's Infinity Auto Packager tool!).
-	- Uploaded mod to official SpellHold Studios GitHub mirror account.
+	- Uploaded mod to official Spellhold Studios GitHub mirror account.
 
 - <ins>Minor updates</ins>:
 	- Fixed Yeslick portraits in EE games.
 	- New icon for *Holy Symbol of Clangeddin* (thanks Lava).
 	- Fixed *Holy Symbol of Clangeddin* restriction flags.
 	- Fixed *Spiritual Axe* which now deals 1d8 damage (half slashing and magic).
+	- Renamed LK#YK kit id to LK_ALAGHOR.
 	- Fixed `ADD_KIT` process: now, Alaghor of Clangeddin kit is restricted to Lawful Neutral and Lawful Good as per description. Added missing lower case kit name.
 	- Added abilities descriptions (EE games).
 	- Removed useless `NAME2` and `DESC` spells strings.
 	- Added missing `REQUIRE_PREDICATE` process to avoid installing the mod in inaccurate games.
-	- Replaced `AUTHOR` keyword with `SUPPORT`.
 	- `README` command now accepts translated files.
-
 	- Updated English translation for compatibility with GW_UPDATE_ITM_DESCRIPTION_TO_EE WeiDU function requirements which automatically removes usability restrictions for EE games ; and integrated BWP Fixpack tokens typos fix.
 	- Split setup.tra file into separate thematic files for more comfortable readability.
-
-	- Updated deprecated modding tools links.
+	- `Updated deprecated modding tools links.
 	- Updated, re-formatted and renamed readme file to *yeslicknpc-readme-english.html*.
 	- Reorganized mod architecture tree: created *lib* and *readme* folders to sort files according to their types, renamed *images* folder to *bam* folder.
 	- Removed useless files and backup folder.
