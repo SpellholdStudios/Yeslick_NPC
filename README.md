@@ -182,6 +182,13 @@ A: Absolutely, you don't need our permission to do crossmod with Yeslick.
 
 ##### Versions 3.0 (February 24, 2020)
 
+
+##### Versions 4.0 (18 April 2020)
+
+- Fixed EET install.
+
+## 
+
 - <ins>Major updates</ins>:
 	- Added *yeslicknpc.ini* metadata file to support AL|EN's "Project Infinity".
 	- Components: added `DESIGNATED` numbers and "*yeslick_npc_bg2_fighter-cleric*" and "*yeslick_npc_bg2_alaghor_of_clangeddin*" `LABELS`.
