@@ -58,6 +58,17 @@ ACTION_IF Alaghor_kit BEGIN
 END
 
 
+/* ---------------------- *
+ *  Compiling scripts...  *
+ * ---------------------- */
+PRINT @13 /* Compiling and extending scripts... */
+
+COMPILE ~%MOD_FOLDER%/scripts/lk#yesl.baf~
+		~%MOD_FOLDER%/scripts/lk#yes25.baf~
+
+EXTEND_BOTTOM ~ar2010.bcs~ ~%MOD_FOLDER%/scripts/ar2010.baf~
+
+
 /* ------------------------ *
  *  Compiling dialogues...  *
  * ------------------------ */
@@ -96,17 +107,6 @@ ACTION_IF is_eet BEGIN
 END ELSE BEGIN
 	COMPILE ~%MOD_FOLDER%/dialogue/fatesp.d~
 END
-
-
-/* ---------------------- *
- *  Compiling scripts...  *
- * ---------------------- */
-PRINT @13 /* Compiling and extending scripts... */
-
-COMPILE ~%MOD_FOLDER%/scripts/lk#yesl.baf~
-		~%MOD_FOLDER%/scripts/lk#yes25.baf~
-
-EXTEND_BOTTOM ~ar2010.bcs~ ~%MOD_FOLDER%/scripts/ar2010.baf~
 
 
 /* ----------------------------- *
