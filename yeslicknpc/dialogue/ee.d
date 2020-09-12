@@ -19,8 +19,8 @@ EXIT
 CHAIN IF ~Global("LK#YeslickDornTOB","GLOBAL",0) 
 CombatCounter(0) 
 !StateCheck("DORN",CD_STATE_NOTVALID) 
-InParty("lk#yeslk") 
-See("lk#yeslk") 
+InParty("DORN") 
+See("DORN") 
 !StateCheck("lk#yeslk",CD_STATE_NOTVALID)~ 
 THEN BLK#YE25 LK#YeslickDorn25 
   @4 /* I wouldn't be much surprised, Dorn, if we had to deal with ye one day. Just as we had to deal with Irenicus and his sister. */

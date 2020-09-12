@@ -267,8 +267,8 @@ DO ~SetGlobal("LK#YeslickImoen","GLOBAL",1)~
 EXIT
 
 // Imoen 2
-CHAIN IF ~InParty("Imoen2")
-See("Imoen2")
+CHAIN IF ~InParty("lk#yeslk")
+See("lk#yeslk")
 !StateCheck("Imoen2",CD_STATE_NOTVALID)
 !StateCheck("lk#yeslk",CD_STATE_NOTVALID)
 CombatCounter(0)
@@ -340,7 +340,7 @@ See("lk#yeslk")
 !StateCheck("lk#yeslk",CD_STATE_NOTVALID)
 !StateCheck("Jan",CD_STATE_NOTVALID)
 CombatCounter(0)
-Global("LK#YeslickJan","GLOBAL",0)~ THEN BLK#YES LK#YeslickJan_1
+Global("LK#YeslickJan","GLOBAL",0)~ THEN BJAN LK#YeslickJan_1
 @130 /* A worshipper of Clangeddin, are you? */
 DO ~SetGlobal("LK#YeslickJan","GLOBAL",1)~
 == BLK#YES @131 /* Aye, that I am. Have a problem with it, gnome? */
@@ -390,7 +390,7 @@ See("lk#yeslk")
 !StateCheck("lk#yeslk",CD_STATE_NOTVALID)
 !StateCheck("Keldorn",CD_STATE_NOTVALID)
 CombatCounter(0)
-Global("LK#YeslickKeldorn","GLOBAL",1)~ THEN BLK#YES LK#YeslickKeldorn_2
+Global("LK#YeslickKeldorn","GLOBAL",1)~ THEN BKELDOR LK#YeslickKeldorn_2
 @150 /* Are you alright, friend? You look concerned about something. */
 DO ~SetGlobal("LK#YeslickKeldorn","GLOBAL",2)~
 == BLK#YES @151 /* Ah, it's nothin', Keldorn. I just cannae believe the shape o' this city. Thieves and criminals everywhere... it makes me wonder what the world will be lookin' like after I'm gone. */
