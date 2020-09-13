@@ -277,3 +277,6 @@
 @276  = ~That young woman over there; do you see her? What do you suppose brought a young lass such as her into an unsavory institution such as this? Perhaps she has been sent by her mother to retrieve her alcoholic father for the countless time. Perhaps she is an orphan who is forced to find undesirable work simply to keep herself fed. Perhaps she is to meet her beloved her for a secret rendezvous, away from the prying eyes of their parents.~
 @277  = ~Ye really think o' all this, thief? Why, I would've expected ye ta say somethin' like 'I steals their goods while they're drunk'. Perhaps I misjudged ye…~
 @278  = ~Or perhaps ye should stop thinkin' and get ta drinkin'! If all yer gonna do is yammer on about yer thoughts, then I'll drink yer ale for ye!~
+
+/* new for v5.0 */
+@279  = ~I do not take promises lightly... nor oaths. I would continue to abide by <CHARNAME>'s orders even if <PRO_HESHE> did not wish my presence here; <CHARNAME> has become a close friend, Yeslick... especially after Khalid's death and our capture. Situations such as this bring people together.~

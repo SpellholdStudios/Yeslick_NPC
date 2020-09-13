@@ -289,7 +289,10 @@ See("Imoen2")
 !StateCheck("Imoen2",CD_STATE_NOTVALID)
 !StateCheck("lk#yeslk",CD_STATE_NOTVALID)
 CombatCounter(0)
-Global("LK#YeslickImoen","GLOBAL",2)~ THEN BLK#YES LK#YeslickImoen_3
+Global("LK#YeslickImoen","GLOBAL",2)
+/* compatibility with Imoen4Ever: this banter should trigger after Spellhold */
+GlobalGT("Chapter","GLOBAL",%bg2_chapter_3%) !Global("C#IM_ImoenStays","GLOBAL",1)
+~ THEN BLK#YES LK#YeslickImoen_3
 @109 /* Imoen, I want ye ta know that I've been watching ye. I see the concern on yer face, lassie; if ye ever need ta discuss what happened with that Irenicus bastard, I'm here. I hope ye know that. */
 DO ~SetGlobal("LK#YeslickImoen","GLOBAL",3)~
 == BIMOEN2 @110 /* I know, Yeslick... I just don't feel like talking about it, okay? Please... */
@@ -313,7 +316,9 @@ DO ~SetGlobal("LK#YeslickJaheira","GLOBAL",1)~
 == BJAHEIR @118 /* I made a promise to my dear friend Gorion, and I intend to see it through. Would you not do the same for an old friend of yours? */
 == BLK#YES @119 /* Aye, if I had any friends o' mine left at all, I reckon I would do the same fer them. Still, did ye even 'ave the slightest idea of what you were gettin' yerself inta? */
 == BJAHEIR @120 /* How could I have? You think too highly of me, dwarf, to have thought me capable of foreseeing this journey for what it has become. */
-= @121 /* I do not take promises lightly... nor oaths. I would continue to abide by <CHARNAME>'s orders even if <PRO_HESHE> did not wish my presence here; <CHARNAME> has become a close friend, Yeslick... especially after Khalid's death and Imoen's capture. Situations such as this bring people together. */
+/* compatibility with Imoen4Ever: Jaheira should not mention Imoen's capture if she returned in chapter 2 */ 
+== BJAHEIR IF ~Global("C#IM_ImoenStays","GLOBAL",0)~ @121 /* I do not take promises lightly... nor oaths. I would continue to abide by <CHARNAME>'s orders even if <PRO_HESHE> did not wish my presence here; <CHARNAME> has become a close friend, Yeslick... especially after Khalid's death and Imoen's capture. Situations such as this bring people together. */
+== BJAHEIR IF ~!Global("C#IM_ImoenStays","GLOBAL",0)~ @279 /* I do not take promises lightly... nor oaths. I would continue to abide by <CHARNAME>'s orders even if <PRO_HESHE> did not wish my presence here; <CHARNAME> has become a close friend, Yeslick... especially after Khalid's death and our capture. Situations such as this bring people together. */
 == BLK#YES @122 /* Well said! Aye, somethin' tells me <CHARNAME>'s lucky ta be havin' comrades like us around. */
 == BJAHEIR @123 /* Let us just hope <PRO_HESHE> makes use of our presence when we are needed. */
 EXIT

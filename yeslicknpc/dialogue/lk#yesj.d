@@ -7,13 +7,13 @@ BEGIN ~LK#YESJ~
 APPEND ~LK#YESJ~
 
 // Friendship #1: <CHARNAME>'s state of ill repair
-IF ~Global("LK#YeslickFriendTalks","GLOBAL",1)~ Yftalk1
+IF ~Global("LK#YeslickFriendTalks","GLOBAL",2)~ Yftalk1
   SAY @0 /* How is it ye ever managed ta get on without me, <CHARNAME>? Yer bruised 'n cut all over, fer Clangeddin's sake! It's as though ye go outta yer way t' get hurt! */
-  + ~OR(5) InParty("Jaheira") InParty("Anomen") InParty("Aerie") InParty("Viconia") InParty("Cernd")~ + @1 /* I do have another healer with me, you know. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",3) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yfta
-  + ~OR(3) Class(Player1,CLERIC_ALL) Class(Player1,DRUID_ALL) Class(Player1,PALADIN_ALL)~ + @2 /* I am something of a healer myself, you know. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",3) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yftab
-  ++ @3 /* I think it's the other way around; things tend to go out of their way to hurt *me*. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",2) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yftb
-  ++ @4 /* I really don't know, Yeslick, but I'm glad to have you around again. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",3) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yftc
-  ++ @5 /* I am more than capable of looking after myself, and I don't need your inane chatter, dwarf. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",3) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yftd
+  + ~OR(5) InParty("Jaheira") InParty("Anomen") InParty("Aerie") InParty("Viconia") InParty("Cernd")~ + @1 /* I do have another healer with me, you know. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",3)~ + Yfta
+  + ~OR(3) Class(Player1,CLERIC_ALL) Class(Player1,DRUID_ALL) Class(Player1,PALADIN_ALL)~ + @2 /* I am something of a healer myself, you know. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",3)~ + Yftab
+  ++ @3 /* I think it's the other way around; things tend to go out of their way to hurt *me*. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",3)~ + Yftb
+  ++ @4 /* I really don't know, Yeslick, but I'm glad to have you around again. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",3)~ + Yftc
+  ++ @5 /* I am more than capable of looking after myself, and I don't need your inane chatter, dwarf. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",3)~ + Yftd
 END
 
 IF ~~ Yfta
@@ -66,11 +66,12 @@ END
 
 
 // Friendship #2: Thunder Hammer Smithy
-IF ~Global("LK#YeslickFriendTalks","GLOBAL",3)~ Yftalk2
+IF ~Global("LK#YeslickFriendTalks","GLOBAL",4)~ Yftalk2
   SAY @23 /* Ye know, as enjoyable as travelin' with ye again is, I cannae help but wonder how ol' Taerom and the fellas at Thunder Hammer Smithy are holdin' up without me. */
-  ++ @24 /* Did you enjoy your time at the smithy, Yeslick? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",4) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft2a
-  ++ @25 /* I honestly don't understand how you could enjoy working for that abhorrent brute. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",4) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft2b
-  ++ @26 /* Then why not just go back to Beregost, dwarf? You're doing no one any good here. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",4) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft2c
+  ++ @24 /* Did you enjoy your time at the smithy, Yeslick? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",5)~ + Yft2a
+  ++ @25 /* I honestly don't understand how you could enjoy working for that abhorrent brute. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",5)~ + Yft2b
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)~ + @26 /* Then why not just go back to Beregost, dwarf? You're doing no one any good here. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",5)~ + Yft2c
+  + ~!Global("C#IM_ImoenStays","GLOBAL",0)~ + @26 /* Then why not just go back to Beregost, dwarf? You're doing no one any good here. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",5)~ + Yft2c_b
 END
 
 IF ~~ Yft2a
@@ -85,7 +86,17 @@ END
 
 IF ~~ Yft2f
   SAY @29 /* Aye, <PRO_GIRLBOY>, and it would be a rest well deserved. Once we get back poor Imoen and give this Irenicus bastard what he deserves, there will be plenty time fer ye ta rest. */
-  = @30 /* <CHARNAME>, yer one o' the strongest people I've met in me whole, long life, and that's sayin' somethin'! Ye should be proud o' yer accomplishments, no matter how difficult they've been ta achieve. */
+IF ~~ THEN + Yft2f_c
+END
+
+/* adjusted line for compatibility with Imoen4Ever */
+IF ~~ Yft2f_b
+  SAY @289 /* Aye, <PRO_GIRLBOY>, and it would be a rest well deserved. Once we give this Irenicus bastard what he deserves, there will be plenty time fer ye ta rest. */
+IF ~~ THEN + Yft2f_c
+END
+
+IF ~~ Yft2f_c
+  SAY @30 /* <CHARNAME>, yer one o' the strongest people I've met in me whole, long life, and that's sayin' somethin'! Ye should be proud o' yer accomplishments, no matter how difficult they've been ta achieve. */
   = @31 /* And fer what it's worth, ye got me by yer side all the way ta help ye achieve 'em. */
   IF ~~ EXIT
 END
@@ -98,24 +109,37 @@ END
 IF ~~ Yft2e
   SAY @33 /* After awhile, though, it just didn't settle with me. I felt as though I could be doin' more with me time, ye know? After wastin' all that time trapped within me mines, I feel as though I shouldn't be wastin' no more o' my time. */
   ++ @34 /* Worry not, Yeslick; I have no plans to waste any time. We have our goal set, and now we must do all we can to achieve it. */ + Yft2d
-  ++ @35 /* I find it funny that you should say that, as I find myself thinking the exact opposite. After all that has happened, I would love to simply be able to rest without thinking three steps ahead. */ + Yft2f
-  ++ @36 /* Then why don't we simply part ways now? You are obviously wasting your time here; you are not wanted. */ + Yft2c
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)~ + @35 /* I find it funny that you should say that, as I find myself thinking the exact opposite. After all that has happened, I would love to simply be able to rest without thinking three steps ahead. */ + Yft2f
+  + ~!Global("C#IM_ImoenStays","GLOBAL",0)~ + @35 /* I find it funny that you should say that, as I find myself thinking the exact opposite. After all that has happened, I would love to simply be able to rest without thinking three steps ahead. */ + Yft2f_b
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)~ + @36 /* Then why don't we simply part ways now? You are obviously wasting your time here; you are not wanted. */ + Yft2c
+  + ~!Global("C#IM_ImoenStays","GLOBAL",0)~ + @36 /* Then why don't we simply part ways now? You are obviously wasting your time here; you are not wanted. */ + Yft2c_b
 END
 
 IF ~~ Yft2c
   SAY @37 /* <CHARNAME>! What's wrong with ye, <PRO_GIRLBOY>?! I don't remember ye ever speakin' ta me like that before. Is it Imoen? Is it what that Irenicus fella done ta ye? Losin' Khalid and Dynaheir? */
-  = @38 /* I understand yer under a lot o' stress, <CHARNAME>, but I donnae take kindly ta be spokin' to that way. I'll leave ye fer now, but just think o' the people around ye before lashin' out like that. */
+IF ~~ THEN + Yft2c_c
+END
+
+IF ~~ Yft2c_b
+  SAY @290 /* <CHARNAME>! What's wrong with ye, <PRO_GIRLBOY>?! I don't remember ye ever speakin' ta me like that before. Is it what that Irenicus fella done ta ye and ye friends? Losin' Khalid and Dynaheir? */
+IF ~~ THEN + Yft2c_c
+END
+
+IF ~~ Yft2c_c
+  SAY @38 /* I understand yer under a lot o' stress, <CHARNAME>, but I donnae take kindly ta be spokin' to that way. I'll leave ye fer now, but just think o' the people around ye before lashin' out like that. */
   IF ~~ EXIT
 END
 
 
 // Friendship #3: Irenicus
-IF ~Global("LK#YeslickFriendTalks","GLOBAL",5)~ Yftalk3
+IF ~Global("LK#YeslickFriendTalks","GLOBAL",6)~ Yftalk3
   SAY @39 /* I never thought I'd be sayin' this, <CHARNAME>, but I think ye managed ta find a foe even more dangerous than Sarevok in this Irenicus fella. Crazy folk seem ta enjoy causin' ye strife, don't they? */
-  ++ @40 /* Unfortunately, that seems to be the case. Evil seems determined to make my life hell. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",6) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft3a
-  ++ @41 /* Sarevok was a far greater threat than this madman. What I had against Sarevok was personal; Irenicus is just a random lunatic who just happened to steal away Imoen. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",6) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft3b
-  ++ @42 /* He is no more a threat than any other foe I have defeated. He will get what he deserves in due time. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",6) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft3a
-  ++ @43 /* Apparently so. Proof of this is quite evident given your determination to pester me with these inane conversations. Begone, dwarf! */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",6) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft3c
+  ++ @40 /* Unfortunately, that seems to be the case. Evil seems determined to make my life hell. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",7)~ + Yft3a
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)~ + @41 /* Sarevok was a far greater threat than this madman. What I had against Sarevok was personal; Irenicus is just a random lunatic who just happened to steal away Imoen. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",7)~ + Yft3b
+  + ~!Global("C#IM_ImoenStays","GLOBAL",0)~ + @291 /* Sarevok was a far greater threat than this madman. What I had against Sarevok was personal; Irenicus is just a random lunatic who just happened to torture me and my friends. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",7)~ + Yft3b
+  ++ @42 /* He is no more a threat than any other foe I have defeated. He will get what he deserves in due time. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",7)~ + Yft3a
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)~ + @43 /* Apparently so. Proof of this is quite evident given your determination to pester me with these inane conversations. Begone, dwarf! */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",7)~ + Yft3c
+  + ~!Global("C#IM_ImoenStays","GLOBAL",0)~ + @43 /* Apparently so. Proof of this is quite evident given your determination to pester me with these inane conversations. Begone, dwarf! */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",7)~ + Yft3c_b
 END
 
 IF ~~ Yft3a
@@ -125,7 +149,12 @@ END
 
 IF ~~ Yft3e
   SAY @45 /* Yer fight against Sarevok was different, though. We had the whole bloody city o' Baldur's Gate on our side, and when the battle was won we were heroes. Nobody here seems willin' ta help against this mageling. */
-  = @46 /* I've been wonderin', though, <CHARNAME>: What happened ta ye after the celebrations? One minute ye was there with the rest o' us and the next ye was gone! */
+IF ~~ THEN + Yft3e_b
+IF ~GlobalGT("bd_plot","GLOBAL",0)~ THEN EXIT
+END
+
+IF ~~ Yft3e_b
+  SAY @46 /* I've been wonderin', though, <CHARNAME>: What happened ta ye after the celebrations? One minute ye was there with the rest o' us and the next ye was gone! */
   ++ @47 /* You should know by now that wining and dining with fancy nobles and recieving faux honors has never been my cup of tea, Yeslick. I left Baldur's Gate late at night, when I knew no one would notice me gone. Fate is certainly cruel to have made me leave such a party to end up at the mercy of Irenicus; I went from one nightmare to the next. */ + Yft3d
   ++ @48 /* I recieved their praise and their more-than-generous rewards for my deeds, and that is all I wanted out of them. I left Baldur's Gate in the middle of the night, when I knew no one would notice that I was missing. */ + Yft3d
   ++ @49 /* As honored as I was by their praise, I felt I had lingered long enough. Something pulled me away from the city; a feeling deep within me that I still cannot understand. Perhaps it is fate that brought me together with this madman. */ + Yft3d
@@ -145,19 +174,28 @@ END
 
 IF ~~ Yft3c
   SAY @37 /* <CHARNAME>! What's wrong with ye, <PRO_GIRLBOY>?! I don't remember ye ever speakin' ta me like that before. Is it Imoen? Is it what that Irenicus fella done ta ye? Losin' Khalid and Dynaheir? */
-  = @38 /* I understand yer under a lot o' stress, <CHARNAME>, but I donnae take kindly ta be spokin' to that way. I'll leave ye fer now, but just think o' the people around ye before lashin' out like that. */
+IF ~~ THEN + Yft3c_c
+END
+
+IF ~~ Yft3c_b
+  SAY @290 /* <CHARNAME>! What's wrong with ye, <PRO_GIRLBOY>?! I don't remember ye ever speakin' ta me like that before. Is it what that Irenicus fella done ta ye and ye friends? Losin' Khalid and Dynaheir? */
+IF ~~ THEN + Yft3c_c
+END
+
+IF ~~ Yft3c_c
+  SAY @38 /* I understand yer under a lot o' stress, <CHARNAME>, but I donnae take kindly ta be spokin' to that way. I'll leave ye fer now, but just think o' the people around ye before lashin' out like that. */
     IF ~~ EXIT
 END
 
 
 // Friendship #4: Taerom's Smithy #1
-IF ~Global("LK#YeslickFriendTalks","GLOBAL",7)~ Yft1
+IF ~Global("LK#YeslickFriendTalks","GLOBAL",8)~ Yft1
   SAY @55 /* Ye know, as much as I enjoyed ol' Taerom's smithy an' the simple life, there donnae be anythin' quite like open air, skies an' adventure. Even for an ol' bludger like meself. */
   = @56 /* I have ta wonder... does it ever leave ye? Wantin' ta see what's on th' other side o' the ridge? */
-  ++ @57 /* Considering you're still around, old friend, I would guess not. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",8) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft1a
-  ++ @58 /* I don't know... perhaps it does. And then, there are those who never adventure or go travelling in their lives. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",8) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft1b
-  ++ @59 /* I hope so. This life, while exciting, is far too dangerous for me. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",8) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft1c
-  ++ @60 /* We don't have time for this, Yeslick. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",8) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft1d
+  ++ @57 /* Considering you're still around, old friend, I would guess not. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",9)~ + Yft1a
+  ++ @58 /* I don't know... perhaps it does. And then, there are those who never adventure or go travelling in their lives. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",9)~ + Yft1b
+  ++ @59 /* I hope so. This life, while exciting, is far too dangerous for me. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",9)~ + Yft1c
+  ++ @60 /* We don't have time for this, Yeslick. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",9)~ + Yft1d
 END
 
 IF ~~ Yft1a
@@ -215,18 +253,18 @@ END
 
 
 // Friendship #5: Irenicus part deux, Murder
-IF ~Global("LK#YeslickFriendTalks","GLOBAL",9)~ Yftalk4
+IF ~Global("LK#YeslickFriendTalks","GLOBAL",10)~ Yftalk4
   SAY @75 /* Hoi, <CHARNAME>... ye alright o'er there, <PRO_GIRLBOY>? That's quite an intense look ye have in yer eyes... */
   = @76 /* <CHARNAME>... ? <CHARNAME>, are ye even listenin' ta me, <PRO_GIRLBOY>?! */
-  ++ @77 /* Oh, Yeslick! You startled me. What is it you need, my friend? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",10) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft4a
-  ++ @78 /* Hm, yes? What is it, Yeslick... ? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",10) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft4a
-  ++ @79 /* Damn, I had hoped if I kept quiet long enough you would leave me be. Why must things never go my way? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",10) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft4b
+  ++ @77 /* Oh, Yeslick! You startled me. What is it you need, my friend? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",11)~ + Yft4a
+  ++ @78 /* Hm, yes? What is it, Yeslick... ? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",11)~ + Yft4a
+  ++ @79 /* Damn, I had hoped if I kept quiet long enough you would leave me be. Why must things never go my way? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",11)~ + Yft4b
 END
 
 IF ~~ Yft4a
   SAY @80 /* What in Clangeddin's name is the matter with ye? That's the third time today I've seen ye nod off like that, like ye was either about ta kill someone or... or ye was under the influence o' some powerful ale. */
   ++ @81 /* You noticed? (sigh) My mind is filled with thoughts of Irenicus. The closer we get to stopping him, the more impossible it seems to be... and yet that only strengthens my urge to confront him. */ + Yft4c
-  ++ @82 /* I suppose I am allowing Irenicus's mind games to affect me. The more I think of what he could be doing to Imoen, the more frenzied my search for Irenicus becomes. */ + Yft4c
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)~ + @82 /* I suppose I am allowing Irenicus's mind games to affect me. The more I think of what he could be doing to Imoen, the more frenzied my search for Irenicus becomes. */ + Yft4c
   ++ @83 /* What are you talking about, Yeslick? There's nothing wrong with me at all. */ + Yft4d
 END
 
@@ -284,7 +322,7 @@ END
 IF ~~  Yft4d
   SAY @106 /* Are ye sure, <PRO_GIRLBOY>? Ye know I'm here ta talk to if ye be needin' an ear. */
   ++ @107 /* ... You noticed, did you? Irenicus... my mind is flooded with thoughts of him. I feel as though the closer we get to stopping him, the more impossible our odds are... and yet that only strengthens my urge to confront him. */ + Yft4c
-  ++ @108 /* I had hoped no one else had noticed; I suppose I am allowing Irenicus's mind games to affect me. The more I think of what he could be doing to Imoen, the more frenzied my search for Irenicus seems to become. */ + Yft4c
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)~ + @108 /* I had hoped no one else had noticed; I suppose I am allowing Irenicus's mind games to affect me. The more I think of what he could be doing to Imoen, the more frenzied my search for Irenicus seems to become. */ + Yft4c
   ++ @109 /* I'm fine, Yeslick. I appreciate your concern, but there's nothing wrong with me. */ + Yft4l
 END
 
@@ -300,11 +338,11 @@ END
 
 
 // Friendship #6: Irenicus and Imoen
-IF ~Global("LK#YeslickFriendTalks","GLOBAL",11)~ Yftalk5
+IF ~Global("LK#YeslickFriendTalksImoen","GLOBAL",2)~ Yftalk5
   SAY @112 /* Say, <CHARNAME>... what do ye reckon Irenicus wants with Imoen? He must've had some kind o' reason fer havin' the cowlies take her with 'em ta Spellhold, eh? But what on Faerun could he be needin' a little girl fer? */
-  ++ @113 /* His reasons matter not to me, Yeslick. I just want my friend back. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",12) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft5a
-  ++ @114 /* Maybe he's into that sort of thing. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",12) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft5b
-  ++ @115 /* I have wondered that myself. As dear as she is to me, there isn't anything extraoadinary about her as far as I know. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",12) RealSetGlobalTimer("LK#YeslickFriendTalksTimer","GLOBAL",7200)~ + Yft5c
+  ++ @113 /* His reasons matter not to me, Yeslick. I just want my friend back. */ DO ~SetGlobal("LK#YeslickFriendTalksImoen","GLOBAL",3)~ + Yft5a
+  ++ @114 /* Maybe he's into that sort of thing. */ DO ~SetGlobal("LK#YeslickFriendTalksImoen","GLOBAL",3)~ + Yft5b
+  ++ @115 /* I have wondered that myself. As dear as she is to me, there isn't anything extraoadinary about her as far as I know. */ DO ~SetGlobal("LK#YeslickFriendTalksImoen","GLOBAL",3)~ + Yft5c
 END
 
 IF ~~ Yft5a
@@ -368,11 +406,11 @@ END
 
 
 // Friendship #7: Amn
-IF ~Global("LK#YeslickFriendTalks","GLOBAL",13)~ Yftalk6
+IF ~Global("LK#YeslickFriendTalks","GLOBAL",12)~ Yftalk6
   SAY @138 /* Ye know, <CHARNAME>, I've ne'er been one fer the city life, but this Amn burgh is somethin' else. Old age must be takin' it's toll for me ta be willin' ta stay in this hellhole fer so long. */
-  ++ @139 /* You don't like Amn, Yeslick? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",14)~ + Yft6a
-  ++ @140 /* I don't much care for it either, Yeslick, and I assure you that I would never want to be here for anything other than business. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",14)~ + Yft6b
-  ++ @141 /* I'm right there with you. I'm more of an outdoorsman, myself; I'll take nature's company over the company of these hooligans any day. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",14)~ + Yft6b
+  ++ @139 /* You don't like Amn, Yeslick? */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",13)~ + Yft6a
+  ++ @140 /* I don't much care for it either, Yeslick, and I assure you that I would never want to be here for anything other than business. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",13)~ + Yft6b
+  ++ @141 /* I'm right there with you. I'm more of an outdoorsman, myself; I'll take nature's company over the company of these hooligans any day. */ DO ~SetGlobal("LK#YeslickFriendTalks","GLOBAL",13)~ + Yft6b
 END
 
 IF ~~ Yft6a
@@ -381,7 +419,12 @@ IF ~~ Yft6a
   = @144 /* When fools can be kings, what hope do we have fer anythin' good? */
   ++ @145 /* There cannot be change unless there is someone willing to work toward it. Bare with me, Yeslick, and there might be some hope for this city. */ + Yft6c
   ++ @146 /* Every city has it's fair share of problems, Yeslick. Amn is no worse than Baldur's Gate. */ + Yft6d
-  ++ @147 /* We're just going to have to turn a blind eye for now, because we have more important business to attend to. Leave the city's affairs to the local militia. */ + Yft6e
+/* do not mention saving Imoen if she is already back */
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)
+!GlobalGT("Chapter","GLOBAL",4)~ + @147 /* We're just going to have to turn a blind eye for now, because we have more important business to attend to. Leave the city's affairs to the local militia. */ + Yft6e
+  + ~OR(2)
+!Global("C#IM_ImoenStays","GLOBAL",0)
+GlobalGT("Chapter","GLOBAL",4)~ + @147 /* We're just going to have to turn a blind eye for now, because we have more important business to attend to. Leave the city's affairs to the local militia. */ + Yft6e_b
 END
 
 IF ~~ Yft6c
@@ -411,7 +454,16 @@ END
 
 IF ~~ Yft6e
   SAY @156 /* Hoi! Savin' Imoen and stoppin' Irenicus may be important, aye, but we have the ability ta do some good while we're here! Why not put it ta use? */
-  = @157 /* But... I reckon yer the boss. This is your show, so ye can run it however ye like. Sometimes I just sometimes worry that... that when I'm gone, things'll only get worse. */
+IF ~~ THEN + Yft6e_c
+END
+
+IF ~~ Yft6e_b
+  SAY @292 /* Hoi! Stoppin' Irenicus may be important, aye, but we have the ability ta do some good while we're here! Why not put it ta use? */
+IF ~~ THEN + Yft6e_c
+END
+
+IF ~~ Yft6e_c
+  SAY @157 /* But... I reckon yer the boss. This is your show, so ye can run it however ye like. Sometimes I just sometimes worry that... that when I'm gone, things'll only get worse. */
   = @158 /* If things are the way they are now, will there be any society left a' hundred or so years af'er I'm gone? */
   ++ @150 /* I never knew this bothered you so much, Yeslick. You always seem fairly content. */ + Yft6f
   ++ @151 /* Whining isn't going to bring about change. Just quit worrying about it so much, and help me take action. */ + Yft6g
@@ -722,8 +774,11 @@ END
 
 
 // ORDERS FROM RENAL TO KILL MAE'VAR
-I_C_T RENAL 45 LK#YesRenal
-  == LK#YESJ IF ~InParty("lk#yeslk") !StateCheck("lk#yeslk",CD_STATE_NOTVALID)~ THEN @241 /* So we're ta help a thief kill a thief, eh? Well, if it be helpin' us find Imoen, then I suppose the ends justify the means... */
+I_C_T3 RENAL 45 LK#YesRenal
+  == LK#YESJ IF ~Global("C#IM_ImoenStays","GLOBAL",0)
+InParty("lk#yeslk") !StateCheck("lk#yeslk",CD_STATE_NOTVALID)~ THEN @241 /* So we're ta help a thief kill a thief, eh? Well, if it be helpin' us find Imoen, then I suppose the ends justify the means... */
+  == LK#YESJ IF ~!Global("C#IM_ImoenStays","GLOBAL",0)
+InParty("lk#yeslk") !StateCheck("lk#yeslk",CD_STATE_NOTVALID)~ THEN @293 /* So we're ta help a thief kill a thief, eh? Well, if it be helpin' us find Irenicus, then I suppose the ends justify the means... */
   == RENAL @242 /* The ends *always* justify the means, my short friend. */
 END
 
@@ -795,9 +850,11 @@ END
 
 
 // HELPING JERMIEN
-I_C_T2 JUGJER01 18 LK#YesJerm
-  == LK#YESJ IF ~InParty("lk#yeslk") !StateCheck("lk#yeslk",CD_STATE_NOTVALID)~ THEN @257 /* I tire o' helpin' these Cowlies! Ain't they the ones who kidnapped Imoen? Why does it seem we're always bein' stuck helpin' them out everywhere we go, then? */
-  == JUGJER01 @258 /* What are you standing around for, then? Off with you! My experiments will wait for no man! */
+I_C_T JUGJER01 18 LK#YesJerm
+  == LK#YESJ IF ~Global("C#IM_ImoenStays","GLOBAL",0)
+InParty("lk#yeslk") !StateCheck("lk#yeslk",CD_STATE_NOTVALID)~ THEN @257 /* I tire o' helpin' these Cowlies! Ain't they the ones who kidnapped Imoen? Why does it seem we're always bein' stuck helpin' them out everywhere we go, then? */
+  == JUGJER01 IF ~Global("C#IM_ImoenStays","GLOBAL",0)
+InParty("lk#yeslk") !StateCheck("lk#yeslk",CD_STATE_NOTVALID)~ THEN @258 /* What are you standing around for, then? Off with you! My experiments will wait for no man! */
 END
 
 

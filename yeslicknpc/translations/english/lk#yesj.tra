@@ -286,3 +286,15 @@
 @285  = ~We're ta sneak into the drow city? Bah! Subtlety isn't one o' me strong points, <CHARNAME>. I donnae like sneakin' around when our problems could jus' as easily be solved by bashin' some drow heads in.~
 @286  = ~As much as I despise the dark elves, I think we did the right thing lettin' this one go. He seemed... different. Mebbe he'll do some good with the chance we gave him.~
 @287  = ~A mindflayer, was he? Foul creatures... it is strange that he would be helpin' us.~
+
+/* new for v5.0 */
+/* @29 without mentioning Imoen being kidnapped */
+@289   = ~Aye, <PRO_GIRLBOY>, and it would be a rest well deserved. Once we give this Irenicus bastard what he deserves, there will be plenty time fer ye ta rest.~
+/* @37 without mentioning Imoen being kidnapped */
+@290   = ~<CHARNAME>! What's wrong with ye, <PRO_GIRLBOY>?! I don't remember ye ever speakin' ta me like that before. Is it what that Irenicus fella done ta ye and ye friends? Losin' Khalid and Dynaheir?~
+/* @41 without mentioning Imoen being kidnapped */
+@291   = ~Sarevok was a far greater threat than this madman. What I had against Sarevok was personal; Irenicus is just a random lunatic who just happened to torture me and my friends.~
+/* @156 without mentioning Imoen being kidnapped */
+@292  = ~Hoi! Stoppin' Irenicus may be important, aye, but we have the ability ta do some good while we're here! Why not put it ta use?~
+/* @241 without mentioning Imoen being kidnapped */
+@293  = ~So we're ta help a thief kill a thief, eh? Well, if it be helpin' us find Irenicus, then I suppose the ends justify the means...~
