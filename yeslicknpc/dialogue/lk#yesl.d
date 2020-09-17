@@ -12,7 +12,8 @@ IF ~~ Yjoina
   = @5 /* Ye heard right about me goin' ta work for ol' Taerom, and that suited me well for a short time. I got ta havin' all kinds o' nasty nightmares, though, and each o' them involved you in some way. */
   = @6 /* I felt like it was a sign that I still had a part to play in yer adventures, so I decided ta track ye down. Sure, I wasn't any sort o' happy ta find ye had moved all the way to Amn, but I dinnae let that slow me down. */
   ++ @7 /* You always were a superstitious man. I would love to have you join me, though, my friend. I should warn you, however, that I am in the middle of tracking down a rogue wizard by the name of Irenicus. I do not know what purpose he has, but he has taken something very dear to me that I must retrieve. It will be a dangerous journey. */ + Yjoind
-  ++ @8 /* Your aid would be greatly appreciated, my friend. Imoen was recently incarcerated in Spellhold, and I am in the process of finding the means of traveling there. This will be a long and arduous journey. */ + Yjoine
+/* Global("C#IM_ImoenStays","GLOBAL",0) is for compatibility with Imoen4Ever */
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)~ + @8 /* Your aid would be greatly appreciated, my friend. Imoen was recently incarcerated in Spellhold, and I am in the process of finding the means of traveling there. This will be a long and arduous journey. */ + Yjoine
   ++ @9 /* I am sorry, Yeslick, but I feel as though I have no need for extra aid at the moment. Perhaps some other time? */ + Yjoinf
   ++ @10 /* Thank you, but no thank you. I have no need for an old, decrepit dwarf slowing me down. */ + Yjoing
 END
@@ -41,7 +42,7 @@ IF ~~ Yjoinb
   SAY @5 /* Ye heard right about me goin' ta work for ol' Taerom, and that suited me well for a short time. I got ta havin' all kinds o' nasty nightmares, though, and each o' them involved you in some way. */
   = @6 /* I felt like it was a sign that I still had a part to play in yer adventures, so I decided ta track ye down. Sure, I wasn't any sort o' happy ta find ye had moved all the way to Amn, but I dinnae let that slow me down. */
   ++ @7 /* You always were a superstitious man. I would love to have you join me, though, my friend. I should warn you, however, that I am in the middle of tracking down a rogue wizard by the name of Irenicus. I do not know what purpose he has, but he has taken something very dear to me that I must retrieve. It will be a dangerous journey. */ + Yjoind
-  ++ @8 /* Your aid would be greatly appreciated, my friend. Imoen was recently incarcerated in Spellhold, and I am in the process of finding the means of traveling there. This will be a long and arduous journey. */ + Yjoine
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)~ + @8 /* Your aid would be greatly appreciated, my friend. Imoen was recently incarcerated in Spellhold, and I am in the process of finding the means of traveling there. This will be a long and arduous journey. */ + Yjoine
   ++ @9 /* I am sorry, Yeslick, but I feel as though I have no need for extra aid at the moment. Perhaps some other time? */ + Yjoinf
   ++ @10 /* Thank you, but no thank you. I have no need for an old, decrepit dwarf slowing me down. */ + Yjoing
 END
@@ -50,7 +51,7 @@ IF ~~ Yjoinc
   SAY @15 /* Hmph! Happy te see ye, too, <CHARNAME>. Moved on with me life I had, workin' in Taerom's smithy back in Beregost. Suited me well for a short time, 'til I got ta havin' all kinds o' nasty nightmares. Each o' them involved you in some way. */
   = @6 /* I felt like it was a sign that I still had a part to play in yer adventures, so I decided ta track ye down. Sure, I wasn't any sort o' happy ta find ye had moved all the way to Amn, but I dinnae let that slow me down. */
   ++ @7 /* You always were a superstitious man. I would love to have you join me, though, my friend. I should warn you, however, that I am in the middle of tracking down a rogue wizard by the name of Irenicus. I do not know what purpose he has, but he has taken something very dear to me that I must retrieve. It will be a dangerous journey. */ + Yjoind
-  ++ @8 /* Your aid would be greatly appreciated, my friend. Imoen was recently incarcerated in Spellhold, and I am in the process of finding the means of traveling there. This will be a long and arduous journey. */ + Yjoine
+  + ~Global("C#IM_ImoenStays","GLOBAL",0)~ + @8 /* Your aid would be greatly appreciated, my friend. Imoen was recently incarcerated in Spellhold, and I am in the process of finding the means of traveling there. This will be a long and arduous journey. */ + Yjoine
   ++ @9 /* I am sorry, Yeslick, but I feel as though I have no need for extra aid at the moment. Perhaps some other time? */ + Yjoinf
   ++ @10 /* Thank you, but no thank you. I have no need for an old, decrepit dwarf slowing me down. */ + Yjoing
 END
