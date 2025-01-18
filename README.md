@@ -1,3 +1,9 @@
+<hr>
+
+:warning: **The maintenance and support of this project has been moved to a [new repository](https://github.com/Spellhold-Studios/Yeslick-NPC).**
+
+<hr><br>
+
 ![Latest Release](https://img.shields.io/github/v/release/SpellholdStudios/Yeslick_NPC?include_prereleases&color=darkred)<a name="top" id="top"> </a>
 ![Platform](https://img.shields.io/static/v1?label=platform&message=windows%20%7C%20macos%20%7C%20linux&color=informational)
 ![Language](https://img.shields.io/static/v1?label=language&message=English&color=limegreen)
